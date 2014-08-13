@@ -4,14 +4,14 @@ This module is intended to replicate and expand upon the functionality provided 
 
 **For Content Authors**
 
- - Indicates to a user that they are logged in
- - Indicates whether they are viewing draft or live content
- - Quickly edit the page you're viewing
+ * Indicates to a user that they are logged in
+ * Indicates whether they are viewing draft or live content
+ * Quickly edit the page you're viewing
  
  **For Developers**
  
- - When in Dev Mode links are included for accessing most of SilverStripe's [URL Variable Tools](http://doc.silverstripe.org/framework/en/reference/urlvariabletools)
- - Developers can access these tools on a live website by nominating themselves as a developer in the site config
+ * When in Dev Mode links are included for accessing most of SilverStripe's [URL Variable Tools](http://doc.silverstripe.org/framework/en/reference/urlvariabletools)
+ * Developers can access these tools on a live website by nominating themselves as a developer in the site config
 
 
 ##Requirements
@@ -38,4 +38,4 @@ The BetterNavigator.ss template's scope is set to the page that is being viewed,
 
 ##Known issues
 
- - Probably won't work in IE8 or lower.
+ * Probably won't work in IE8 or lower.

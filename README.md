@@ -1,3 +1,5 @@
+#BetterNavigator for SilverStripe
+
 ![Diagram of module](/images/demo.png?raw=true)
 
 This module is intended to replicate and expand upon the functionality provided by SilverStripe's built-in SilverStripeNavigator class. It provides a handy front-end menu for CMS users which offers these features:

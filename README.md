@@ -29,6 +29,16 @@ Download, place the folder in your project root, rename it to 'betternavigator' 
 
 Just place **$BetterNavigator** somewhere in your template(s). If your website uses caching, make sure BetterNavigator's output is excluded.
 
+**Access developer tools on a live website**  
+You can mark certain CMS users as developers in your site's config, so they can acess developer tools when logged in. Example YAML:
+
+```
+  BetterNavigator:
+    developers:
+      - 'dev@yoursite.com'
+      - 'otherdev@yoursite.com'
+```
+
 ##Customisation
 
 Scripts and CSS are included via the BetterNavigator.ss template, so you can completely customise the front-end code and included links by copying or creating your own BetterNavigator.ss template.

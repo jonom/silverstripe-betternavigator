@@ -8,11 +8,10 @@ This module is intended to replicate and expand upon the functionality provided 
  * Indicates whether they are viewing draft or live content
  * Quickly edit the page you're viewing
  
- **For Developers**
+**For Developers**
  
  * When in Dev Mode links are included for accessing most of SilverStripe's [URL Variable Tools](http://doc.silverstripe.org/framework/en/reference/urlvariabletools)
  * Developers can access these tools on a live website by nominating themselves as a developer in the site config
-
 
 ##Requirements
 

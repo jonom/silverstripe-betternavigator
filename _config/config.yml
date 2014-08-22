@@ -8,3 +8,6 @@ LeftAndMain:
 ContentController:
   extensions:
     - BetterNavigator
+DevelopmentAdmin:
+  extensions:
+    - FlushOnDevBuild

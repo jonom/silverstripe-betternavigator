@@ -25,7 +25,7 @@ SilverStripe 3.1
 Add "jonom/silverstripe-betternavigator" to your requirements.
 
 **Manually**  
-Download, place the folder in your project root, rename it to 'betternavigator' (if applicable) and run a dev/build?flush.
+Download, place the folder in your project root, rename it to 'betternavigator' (if applicable) and run a dev/build.
 
 ##How to use
 

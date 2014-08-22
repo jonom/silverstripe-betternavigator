@@ -5,3 +5,9 @@ After: 'framework/*','cms/*'
 LeftAndMain:
   extra_requirements_javascript:
     - 'betternavigator/javascript/BN.LeftAndMain.Preview.js'
+ContentController:
+  extensions:
+    - BetterNavigator
+DevelopmentAdmin:
+  extensions:
+    - FlushOnDevBuild

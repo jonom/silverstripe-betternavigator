@@ -53,8 +53,8 @@
 						<a href="$Link?isDev=1"><span class="bn-icon-devmode"></span>Dev Mode</a>
 					<% end_if %>
 					
-					<a href="$Link?flush=all"><span class="bn-icon-flush"></span>Flush Templates</a>
-					<a href="/dev/build/?flush=1" target="_blank"><span class="bn-icon-db"></span>Build Database</a>
+					<a href="$Link?flush=1" title="Flush templates and manifest, and regenerate images for this page (behaviour varies by Framework version)"><span class="bn-icon-flush"></span>Flush Caches</a>
+					<a href="/dev/build/?flush=1" target="_blank" title="Build database and flush caches (currently excludes template caches)"><span class="bn-icon-db"></span>Build Database</a>
 					<a href="/dev/" target="_blank"><span class="bn-icon-tools"></span>Dev Menu</a>
 					
 				</div>

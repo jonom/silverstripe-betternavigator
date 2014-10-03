@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	BetterNavigatorStatus.onclick=function(){
 		BetterNavigator.className = BetterNavigator.className === 'collapsed' ? 'open' : 'collapsed';
 		//Set cookie to remember state
-		document.cookie="BetterNavigator=" + BetterNavigator.className;
+		document.cookie="BetterNavigator=" + BetterNavigator.className + ";path=/";
 	};
 	
 	//Restore menu state

@@ -78,6 +78,8 @@ span[class^='bn-icon'], span[class*=' bn-icon'] {
   top: 0;
   right: 0;
   z-index: 99999;
+  max-height: 100%;
+  overflow: auto;
   background: #cfd8de;
   border: 1px solid #ecf0f2;
   border-width: 0 0 1px 1px;

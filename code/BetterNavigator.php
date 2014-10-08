@@ -26,7 +26,7 @@ class BetterNavigator extends DataExtension {
 		$isDev = Director::isDev();
 
 		if($isDev || Permission::check('CMS_ACCESS_CMSMain') || Permission::check('VIEW_DRAFT_CONTENT')) {			
-			if($this->owner && $this->owner->dataRecord) {
+			if($this->owner && $this->owner->dataRecord && $this->owner->dataRecord instanceof SiteTree) {
 
 				//Get SilverStripeNavigator links & stage info (CMS/Stage/Live/Archive)
 				$nav = array();

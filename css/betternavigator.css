@@ -89,23 +89,14 @@ span[class^='bn-icon'], span[class*=' bn-icon'] {
 	text-align: left;
 }
 #BetterNavigator.collapsed {
-	right: auto;
-	left: 100%;
-	width: auto;
-	overflow: visible;
-}
-#BetterNavigator.collapsed #BetterNavigatorStatus {
-	-moz-transform: rotate(90deg);
-	-ms-transform: rotate(90deg);
-	-webkit-transform: rotate(90deg);
-	transform: rotate(90deg);
-	-moz-transform-origin: 0 0;
-	-ms-transform-origin: 0 0;
-	-webkit-transform-origin: 0 0;
-	transform-origin: 0 0;
-	white-space: nowrap;
-	box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
-	border: 1px solid #fff;
+	-moz-transform-origin: right top;
+	-ms-transform-origin: right top;
+	-webkit-transform-origin: right top;
+	transform-origin: right top;
+	-moz-transform: rotate(90deg) translate(100%, 0);
+	-ms-transform: rotate(90deg) translate(100%, 0);
+	-webkit-transform: rotate(90deg) translate(100%, 0);
+	transform: rotate(90deg) translate(100%, 0);
 	border-width: 0 1px 1px 0;
 }
 #BetterNavigator.collapsed #BetterNavigatorStatus .bn-icon-close {

@@ -16,6 +16,8 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
 	top: 0;
 	right: 0;
 	z-index: 99999;
+	max-height: 100%;
+	overflow: auto;
 	background: #cfd8de;
 	border: 1px solid #ecf0f2;
 	border-width: 0 0 1px 1px;
@@ -27,30 +29,23 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
 	//Toggle states 
 	
 	&.collapsed {
-		right: auto;
-		left: 100%;
-		width: auto;
-		overflow: visible;
-	}
-	&.collapsed #BetterNavigatorStatus {
-		@include rotate(90deg);
-		@include transform-origin(0,0);
-		white-space: nowrap;
-		box-shadow: 0px 0px 1px rgba(0,0,0,0.5);
-		border: 1px solid #fff;
+		@include transform-origin(right,top);
+		@include transform(rotate(90deg) translate(100%,0));
 		border-width: 0 1px 1px 0;
 		
-		.bn-icon-close {
+		#BetterNavigatorStatus {
+			
+			.bn-icon-close {
+				display: none;
+			}
+			.bn-icon-cog {
+				display: inline-block;
+			}
+		}
+		
+		#BetterNavigatorContent {
 			display: none;
 		}
-		.bn-icon-cog {
-			display: inline-block;
-		}
-	}
-	&.collapsed #BetterNavigatorStatus {
-	}
-	&.collapsed #BetterNavigatorContent {
-		display: none;
 	}
 }
 

@@ -25,7 +25,7 @@ class BetterNavigator extends DataExtension {
 	public function BetterNavigator() {
 		$isDev = Director::isDev();
 
-		if($isDev || Permission::check('CMS_ACCESS_CMSMain') || Permission::check('VIEW_DRAFT_CONTENT')) {			
+		if($isDev || Permission::check('CMS_ACCESS_CMSMain') || Permission::check('VIEW_DRAFT_CONTENT')) {
 			if($this->owner && $this->owner->dataRecord && $this->owner->dataRecord instanceof SiteTree) {
 
 				//Get SilverStripeNavigator links & stage info (CMS/Stage/Live/Archive)
@@ -50,6 +50,7 @@ class BetterNavigator extends DataExtension {
 					'Stage' => Versioned::current_stage(),
 					'LoginLink' => Config::inst()->get('Security', 'login_url'),
 					'Mode' => Director::get_environment_type(),
+					'CanEdit' => Permission::check('BETTERNAVIGATOR_CANEDIT'),
 					'IsDeveloper' => $isDeveloper
 				));
 				
@@ -60,5 +61,41 @@ class BetterNavigator extends DataExtension {
 			}
 		}
 		return false;
+	}
+}
+
+class BetterNavigator_Permissions extends Extension implements PermissionProvider
+{
+	/**
+	 * Provide permissions for viewing better navigator on the front end
+	 *
+	 * @return array
+	 */
+	public function providePermissions()
+	{
+		return array(
+			"BETTERNAVIGATOR_CANEDIT" => array(
+				'name' => 'Show Better Navigator `Edit in CMS` Option',
+				'category' => 'Front End'
+			)
+		);
+	}
+
+	public function requireDefaultRecords()
+	{
+		$contentGroup = Group::get()->filter('code', 'content-authors')->first();
+		$previousPermissions = Permission::get()->filter('Code', 'BETTERNAVIGATOR_CANEDIT');
+
+		if ($contentGroup && $contentGroup->exists() && !$previousPermissions->count()) {
+			Permission::create(
+				array(
+					'Code' => 'BETTERNAVIGATOR_CANEDIT',
+					'Type' => 1,
+					'GroupID' => $contentGroup->ID
+				)
+			)->write();
+
+			DB::alteration_message('Default Better Navigator permissions created', 'created');
+		}
 	}
 }

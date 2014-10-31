@@ -8,3 +8,6 @@ LeftAndMain:
 ContentController:
   extensions:
     - BetterNavigator
+Permission:
+  extensions:
+    - BetterNavigator_Permissions

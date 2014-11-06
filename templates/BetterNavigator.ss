@@ -72,6 +72,8 @@
 					<a href="$Link?previewwrite=1&isDev=1"><span class="bn-icon-info"></span>Preview write</a>
 					
 				</div>
+				
+				<% include BetterNavigatorExtraDevTools %>
 			
 			<% end_if %>
 			

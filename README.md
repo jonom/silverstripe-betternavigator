@@ -1,6 +1,6 @@
 #BetterNavigator for SilverStripe
 
-![Diagram of module](/images/demo.png?raw=true)
+![Diagram of module](images/demo.png)
 
 This module is intended to replicate and expand upon the functionality provided by SilverStripe's built-in SilverStripeNavigator class. It provides a handy front-end menu for CMS users which offers these features:
 
@@ -32,7 +32,7 @@ Download, place the folder in your project root, rename it to 'betternavigator' 
 Just place **$BetterNavigator** somewhere in your template(s). If your website uses caching, make sure BetterNavigator's output is excluded.
 
 **Access developer tools on a live website**  
-You can mark certain CMS users as developers in your site's config, so they can acess developer tools when logged in. Example YAML:
+You can mark certain CMS users as developers in your site's config, so they can access developer tools when logged in. Example YAML:
 
 ```
   BetterNavigator:
@@ -43,9 +43,17 @@ You can mark certain CMS users as developers in your site's config, so they can 
 
 ##Customisation
 
-Scripts and CSS are included via the BetterNavigator.ss template, so you can completely customise the front-end code and included links by copying or creating your own BetterNavigator.ss template.
+BetterNavigator's output is controlled by templates so it can be [easily overridden](http://doc.silverstripe.org/framework/en/topics/theme-development#overriding).
 
-The BetterNavigator.ss template's scope is set to the page that is being viewed, so any methods available in your page controller will be available in the BetterNavigator.ss template. This should allow you to add custom links by page type if you wish.
+####Option 1: Add some stuff
+
+If you want to add some content (new buttons for instance) to BetterNavigator, just create a template called *BetterNavigatorExtraContent.ss* or *BetterNavigatorExtraDevTools.ss* and add your content to it. Place the template in the includes folder for your website's theme, or in *mysite/templates/includes/* if you want to use it across multiple themes.
+
+####Option 2: Complete control
+
+All content, scripts and CSS are loaded via the BetterNavigator.ss template, so you can completely customise BetterNavigator's front-end code by copying or creating your own BetterNavigator.ss template.
+
+The BetterNavigator.ss template's scope is set to the page that is being viewed, so any methods available in your page controller will be available in the BetterNavigator.ss template. This should allow you to add custom links by page type and introduce complex logic if you want to.
 
 ##Known issues
 

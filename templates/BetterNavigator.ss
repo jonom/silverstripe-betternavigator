@@ -31,8 +31,9 @@
 						<span class="bn-disabled"><span class="bn-icon-view"></span>Deleted from draft site</span>
 					<% end_if %>
 				<% end_if %>
-				<a href="$CMSLink.Link" target="_blank"><span class="bn-icon-edit"></span>Edit in CMS</a>
-				
+				<% if $CanEdit %>
+					<a href="$CMSLink.Link" target="_blank"><span class="bn-icon-edit"></span>Edit in CMS</a>
+				<% end_if %>
 				<% if $Member %>
 					<a href="Security/logout?BackURL=$Link"><span class="bn-icon-user"></span>Log out<% if $Member.FirstName %><span class="light"> ($Member.FirstName)</span><% end_if %></a>
 				<% else %>

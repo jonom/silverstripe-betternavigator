@@ -40,6 +40,8 @@
 				<% end_if %>
 				
 			</div>
+				
+			<% include BetterNavigatorExtraContent %>
 			
 			<% if $Mode=='dev' || $IsDeveloper %>
 			

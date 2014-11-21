@@ -58,3 +58,7 @@ The BetterNavigator.ss template's scope is set to the page that is being viewed,
 ##Known issues
 
  * Probably won't work in IE8 or lower.
+
+##Bonus: better debugging tools
+
+This module provide quick access to SilverStripe's built in [URL Variable Tools](http://doc.silverstripe.org/framework/en/reference/urlvariabletools) but reading their output isn't much fun. You can peek under SilverStripe's hood much more conveniently using the recently released [SilverStripe Clockwork](https://github.com/markguinn/silverstripe-clockwork) by Mark Guinn. Out of the box SQL Queries and controller events are logged. It's Chrome only for now.

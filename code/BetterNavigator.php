@@ -45,17 +45,19 @@ class BetterNavigator extends DataExtension {
 				$isDeveloper = $member && is_array($devs) ? in_array($member->Email, $devs) : false;
 				
 				//Add other data for template
-				$nav = array_merge($nav, array(
+				$backURL = '?BackURL=' . urlencode($this->owner->Link());
+				$bNData = array_merge($nav, array(
 					'Member' => $member,
 					'Stage' => Versioned::current_stage(),
-					'LoginLink' => Config::inst()->get('Security', 'login_url'),
+					'LoginLink' => Config::inst()->get('Security', 'login_url') . $backURL,
+					'LogoutLink' => 'Security/logout' . $backURL,
 					'Mode' => Director::get_environment_type(),
 					'IsDeveloper' => $isDeveloper
 				));
 				
 				//Merge with page data, send to template and render
-				$nav = new ArrayData($nav);
-				$page = $this->owner->customise($nav);
+				$bNData = new ArrayData($bNData);
+				$page = $this->owner->customise(array('BetterNavigator' => $bNData));
 				return $page->renderWith('BetterNavigator');
 			}
 		}

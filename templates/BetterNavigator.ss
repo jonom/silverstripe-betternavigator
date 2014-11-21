@@ -5,58 +5,62 @@
 	
 	<div id="BetterNavigator" class="collapsed">
 		
-		<div id="BetterNavigatorStatus" class="$Stage">
-			<span class="bn-icon-cog"></span>
-			<% if $LiveLink.Active %>Published<% end_if %>
-			<% if $StageLink.Active %>Draft<% end_if %>
-			<% if $ArchiveLink.Active %>Archived<% end_if %>
-			<span class="bn-icon-close"></span>
-		</div>
+		<% with $BetterNavigator %>
+			<div id="BetterNavigatorStatus" class="$Stage">
+				<span class="bn-icon-cog"></span>
+				<% if $LiveLink.Active %>Published<% end_if %>
+				<% if $StageLink.Active %>Draft<% end_if %>
+				<% if $ArchiveLink.Active %>Archived<% end_if %>
+				<span class="bn-icon-close"></span>
+			</div>
+		<% end_with %>
 		
 		<div id="BetterNavigatorContent">
 		
 			<div class="bn-links">
-			
-				<% if not $LiveLink.Active %>
-					<% if $LiveLink.Link %>
-						<a href="$LiveLink.Link"><span class="bn-icon-view"></span>View Published</a>
-					<% else %>
-						<span class="bn-disabled"><span class="bn-icon-view"></span>Not yet published</span>
-					<% end_if %>
-				<% end_if %>
-				<% if not $StageLink.Active %>
-					<% if $StageLink.Link %>
-						<a href="$StageLink.Link"><span class="bn-icon-view"></span>View Draft</a>
-					<% else %>
-						<span class="bn-disabled"><span class="bn-icon-view"></span>Deleted from draft site</span>
-					<% end_if %>
-				<% end_if %>
-				<a href="$CMSLink.Link" target="_blank"><span class="bn-icon-edit"></span>Edit in CMS</a>
 				
-				<% if $Member %>
-					<a href="Security/logout?BackURL=$Link"><span class="bn-icon-user"></span>Log out<% if $Member.FirstName %><span class="light"> ($Member.FirstName)</span><% end_if %></a>
-				<% else %>
-					<a href="$LoginLink?BackURL=$Link"><span class="bn-icon-user"></span>Log in</a>
-				<% end_if %>
+				<% with $BetterNavigator %>
+					<% if not $LiveLink.Active %>
+						<% if $LiveLink.Link %>
+							<a href="$LiveLink.Link"><span class="bn-icon-view"></span>View Published</a>
+						<% else %>
+							<span class="bn-disabled"><span class="bn-icon-view"></span>Not yet published</span>
+						<% end_if %>
+					<% end_if %>
+					<% if not $StageLink.Active %>
+						<% if $StageLink.Link %>
+							<a href="$StageLink.Link"><span class="bn-icon-view"></span>View Draft</a>
+						<% else %>
+							<span class="bn-disabled"><span class="bn-icon-view"></span>Deleted from draft site</span>
+						<% end_if %>
+					<% end_if %>
+					<a href="$CMSLink.Link" target="_blank"><span class="bn-icon-edit"></span>Edit in CMS</a>
+					
+					<% if $Member %>
+						<a href="$LogoutLink"><span class="bn-icon-user"></span>Log out<% if $Member.FirstName %><span class="light"> ($Member.FirstName)</span><% end_if %></a>
+					<% else %>
+						<a href="$LoginLink"><span class="bn-icon-user"></span>Log in</a>
+					<% end_if %>
+				<% end_with %>
 				
 			</div>
 				
 			<% include BetterNavigatorExtraContent %>
 			
-			<% if $Mode=='dev' || $IsDeveloper %>
+			<% if $BetterNavigator.Mode=='dev' || $BetterNavigator.IsDeveloper %>
 			
 				<div class="bn-heading">Developer Tools</div>
 				
 				<div class="bn-links">
 					
-					<% if $Mode='dev' %>
+					<% if $BetterNavigator.Mode='dev' %>
 						<span class="bn-disabled" title="Log out to end Dev Mode"><span class="bn-icon-tick"></span>Dev Mode On</span>
 					<% else %>
 						<a href="$Link?isDev=1"><span class="bn-icon-devmode"></span>Dev Mode</a>
 					<% end_if %>
 					
 					<a href="$Link?flush=1" title="Flush templates and manifest, and regenerate images for this page (behaviour varies by Framework version)"><span class="bn-icon-flush"></span>Flush Caches</a>
-					<a href="dev/build/?flush=1" target="_blank" title="Build database and flush caches (currently excludes template caches)"><span class="bn-icon-db"></span>Build Database</a>
+					<a href="dev/build/?flush=1" target="_blank" title="Build database and flush caches (excludes template caches pre SS-3.1.7)"><span class="bn-icon-db"></span>Build Database</a>
 					<a href="dev" target="_blank"><span class="bn-icon-tools"></span>Dev Menu</a>
 					
 				</div>

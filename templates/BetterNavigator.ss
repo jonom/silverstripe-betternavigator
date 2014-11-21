@@ -60,6 +60,8 @@
 					<a href="dev" target="_blank"><span class="bn-icon-tools"></span>Dev Menu</a>
 					
 				</div>
+				
+				<% include BetterNavigatorExtraDevTools %>
 			
 				<div class="bn-heading">Debugging</div>
 				
@@ -75,7 +77,7 @@
 					
 				</div>
 				
-				<% include BetterNavigatorExtraDevTools %>
+				<% include BetterNavigatorExtraDebugging %>
 			
 			<% end_if %>
 			

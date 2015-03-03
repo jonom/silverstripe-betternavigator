@@ -14,23 +14,31 @@ function getCookie(cname) {
     return "";
 }
 
-//Do some stuff when the dom is loaded. (Won't work in IE8 or lower)
-document.addEventListener("DOMContentLoaded", function() {
-
+function initialiseBetterNavigator() {
 	//Dom elements
 	var BetterNavigator = document.getElementById("BetterNavigator");
 	var BetterNavigatorStatus = document.getElementById("BetterNavigatorStatus");
 
 	//Toggle visibility of menu by clicking status
-	BetterNavigatorStatus.onclick=function(){
+	BetterNavigatorStatus.onclick = function () {
 		BetterNavigator.className = BetterNavigator.className === 'collapsed' ? 'open' : 'collapsed';
 		//Set cookie to remember state
-		document.cookie="BetterNavigator=" + BetterNavigator.className + ";path=/";
+		document.cookie = "BetterNavigator=" + BetterNavigator.className + ";path=/";
 	};
-	
+
 	//Restore menu state
 	if (getCookie('BetterNavigator') === 'open') {
 		BetterNavigator.className = 'open';
 	}
-	
-});
+}
+
+if (document.addEventListener) {
+	document.addEventListener("DOMContentLoaded", function () {
+		//wait til DOM is ready
+		initialiseBetterNavigator();
+	});
+} else {
+	//This is the case for IE8 and below
+	//initialise straight away - fine if script is loaded after BN dom element
+	initialiseBetterNavigator();
+}

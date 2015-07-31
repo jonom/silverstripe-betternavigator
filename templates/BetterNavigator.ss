@@ -72,12 +72,12 @@
 				<div class="bn-links">
 					
 					<a href="$Link?showtemplate=1"><span class="bn-icon-info"></span>Show Template</a>
-					<a href="$Link?debug=1&isDev=1"><span class="bn-icon-info"></span>Debug Page</a>
+					<a href="$Link?debug=1&amp;isDev=1"><span class="bn-icon-info"></span>Debug Page</a>
 					<a href="$Link?debugmethods=1"><span class="bn-icon-info"></span>Debug Methods</a>
-					<a href="$Link?debug_request=1&isDev=1"><span class="bn-icon-info"></span>Debug Request</a>
-					<a href="$Link?debugfailover=1&isDev=1"><span class="bn-icon-info"></span>Debug Failover</a>
-					<a href="$Link?showqueries=1&isDev=1"><span class="bn-icon-info"></span>Show Queries</a>
-					<a href="$Link?previewwrite=1&isDev=1"><span class="bn-icon-info"></span>Preview write</a>
+					<a href="$Link?debug_request=1&amp;isDev=1"><span class="bn-icon-info"></span>Debug Request</a>
+					<a href="$Link?debugfailover=1&amp;isDev=1"><span class="bn-icon-info"></span>Debug Failover</a>
+					<a href="$Link?showqueries=1&amp;isDev=1"><span class="bn-icon-info"></span>Show Queries</a>
+					<a href="$Link?previewwrite=1&amp;isDev=1"><span class="bn-icon-info"></span>Preview write</a>
 					
 				</div>
 				

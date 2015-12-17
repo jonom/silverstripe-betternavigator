@@ -9,9 +9,9 @@ This module is intended to replicate and expand upon the functionality provided 
  * Indicates to a user that they are logged in
  * Indicates whether they are viewing draft or live content
  * Quickly edit the page you're viewing
- 
+
 **For Developers**
- 
+
  * When in Dev Mode links are included for accessing most of SilverStripe's [URL Variable Tools](http://doc.silverstripe.org/framework/en/reference/urlvariabletools)
  * Developers can access these tools on a live website by nominating themselves as a developer in the site config
 
@@ -21,17 +21,17 @@ SilverStripe 3.1
 
 ##Installation
 
-**Composer / Packagist ([best practice](http://doc.silverstripe.org/framework/en/trunk/installation/composer))**  
+**Composer / Packagist ([best practice](http://doc.silverstripe.org/framework/en/trunk/installation/composer))**
 Add "jonom/silverstripe-betternavigator" to your requirements.
 
-**Manually**  
+**Manually**
 Download, place the folder in your project root, rename it to 'betternavigator' (if applicable) and run a dev/build?flush=1.
 
 ##How to use
 
 Just place **$BetterNavigator** somewhere in your template(s). If your website uses caching, make sure BetterNavigator's output is excluded.
 
-**Access developer tools on a live website**  
+**Access developer tools on a live website**
 You can mark certain CMS users as developers in your site's config, so they can access developer tools when logged in. Example YAML:
 
 ```

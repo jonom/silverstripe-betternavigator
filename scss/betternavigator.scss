@@ -18,22 +18,25 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
     z-index: 99999;
     max-height: 100%;
     overflow: auto;
-    background: #cfd8de;
-    border: 1px solid #ecf0f2;
-    border-width: 0 0 1px 1px;
-    box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
     font-family: Helvetica, Arial, sans-serif;
     font-size: 12px;
+    line-height: 16px;
     text-align: left;
+
+    a {
+        text-decoration: none;
+    }
 
     //Toggle states
 
     &.collapsed {
+        box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
         @include transform-origin(right,top);
         @include transform(rotate(90deg) translate(100%,0));
         border-width: 0 1px 1px 0;
 
         #BetterNavigatorStatus {
+            border-width: 0 1px 1px 0;
 
             .bn-icon-close {
                 display: none;
@@ -51,29 +54,19 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
 
 //Status
 
+$liveColor: #39b54a;
+$stageColor: #f26c4f;
+$archiveColor: #6f6f6f;
+
 #BetterNavigatorStatus {
     color: #fff;
-    background: #6f6f6f;
+    background: $archiveColor;
+    border: 1px solid shade($archiveColor, 10);
+    border-width: 0 0 0 1px;
     text-transform: uppercase;
     cursor: pointer;
     padding: 10px 15px 8px;
     font-weight: bold;
-
-    &.Live {
-        background: #39b54a;
-
-        &:hover {
-            background: shade(#39b54a, 5);
-        }
-    }
-
-    &.Stage {
-        background: #f26c4f;
-
-        &:hover {
-            background: shade(#f26c4f, 5);
-        }
-    }
 
     .bn-icon-cog {
       margin: -4px 8px -4px -4px;
@@ -91,11 +84,29 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
     }
 
     &:hover {
-        background: shade(#6f6f6f, 5);
+        background: shade($archiveColor, 5);
 
         .bn-icon-cog,
         .bn-icon-close {
           opacity: 1;
+        }
+    }
+
+    &.Live {
+        background: $liveColor;
+        border-color: shade($liveColor, 10);
+
+        &:hover {
+            background: shade($liveColor, 5);
+        }
+    }
+
+    &.Stage {
+        background: $stageColor;
+        border-color: shade($stageColor, 10);
+
+        &:hover {
+            background: shade($stageColor, 5);
         }
     }
 }
@@ -105,6 +116,9 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
 #BetterNavigatorContent {
     padding: 6px;
     color: #71767a;
+    background: #cfd8de;
+    border: 1px solid shade(#cfd8de, 10);
+    border-width: 0 0 1px 1px;
 
     .bn-heading {
         text-align: center;

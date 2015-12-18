@@ -6,11 +6,9 @@
     <div id="BetterNavigator" class="collapsed">
 
         <% with $BetterNavigator %>
-            <div id="BetterNavigatorStatus" class="$Stage">
+            <div id="BetterNavigatorStatus" class="$Viewing">
                 <span class="bn-icon-cog"></span>
-                <% if $LiveLink.Active %>Published<% end_if %>
-                <% if $StageLink.Active %>Draft<% end_if %>
-                <% if $ArchiveLink.Active %>Archived<% end_if %>
+                $Viewing
                 <span class="bn-icon-close"></span>
             </div>
         <% end_with %>
@@ -20,21 +18,25 @@
             <div class="bn-links">
 
                 <% with $BetterNavigator %>
-                    <% if not $LiveLink.Active %>
-                        <% if $LiveLink.Link %>
-                            <a href="$LiveLink.Link"><span class="bn-icon-view"></span>View published</a>
-                        <% else %>
-                            <span class="bn-disabled"><span class="bn-icon-view"></span>Not yet published</span>
+                    <% if $ArchiveLink.Active %>
+                        <a href="$CMSLink.Link" target="_blank"><span class="bn-icon-edit"></span>Restore</a>
+                    <% else %>
+                        <% if not $LiveLink.Active %>
+                            <% if $LiveLink.Link %>
+                                <a href="$LiveLink.Link"><span class="bn-icon-view"></span>View live</a>
+                            <% else %>
+                                <span class="bn-disabled"><span class="bn-icon-view"></span>Not yet published</span>
+                            <% end_if %>
                         <% end_if %>
-                    <% end_if %>
-                    <% if not $StageLink.Active %>
-                        <% if $StageLink.Link %>
-                            <a href="$StageLink.Link"><span class="bn-icon-view"></span>View draft</a>
-                        <% else %>
-                            <span class="bn-disabled"><span class="bn-icon-view"></span>Deleted from draft site</span>
+                        <% if not $StageLink.Active %>
+                            <% if $StageLink.Link %>
+                                <a href="$StageLink.Link"><span class="bn-icon-view"></span>View draft</a>
+                            <% else %>
+                                <span class="bn-disabled"><span class="bn-icon-view"></span>Deleted from draft site</span>
+                            <% end_if %>
                         <% end_if %>
+                        <a href="$CMSLink.Link" target="_blank"><span class="bn-icon-edit"></span>Edit in CMS</a>
                     <% end_if %>
-                    <a href="$CMSLink.Link" target="_blank"><span class="bn-icon-edit"></span>Edit in CMS</a>
 
                     <% if $Member %>
                         <a href="$LogoutLink"><span class="bn-icon-user"></span>Log out<% if $Member.FirstName %><span class="light"> ($Member.FirstName)</span><% end_if %></a>

@@ -40,8 +40,8 @@ span[class^='bn-icon'], span[class*=' bn-icon'] { display: inline-block; }
 #BetterNavigatorStatus:hover .bn-icon-cog, #BetterNavigatorStatus:hover .bn-icon-close { opacity: 1; }
 #BetterNavigatorStatus.Live { background: #39b54a; border-color: #33a343; }
 #BetterNavigatorStatus.Live:hover { background: #36ac46; }
-#BetterNavigatorStatus.Stage { background: #f26c4f; border-color: #da6147; }
-#BetterNavigatorStatus.Stage:hover { background: #e6674b; }
+#BetterNavigatorStatus.Draft { background: #f26c4f; border-color: #da6147; }
+#BetterNavigatorStatus.Draft:hover { background: #e6674b; }
 
 #BetterNavigatorContent { padding: 6px; color: #71767a; background: #cfd8de; border: 1px solid #bac2c8; border-width: 0 0 1px 1px; }
 #BetterNavigatorContent .bn-heading { text-align: center; text-transform: uppercase; font-size: 11px; margin: 8px 0 4px 0; }

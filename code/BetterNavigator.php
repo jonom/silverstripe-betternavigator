@@ -30,13 +30,21 @@ class BetterNavigator extends DataExtension {
 
                 //Get SilverStripeNavigator links & stage info (CMS/Stage/Live/Archive)
                 $nav = array();
+                $viewing = '';
                 $navigator = new SilverStripeNavigator($this->owner->dataRecord);
                 $items = $navigator->getItems();
                 foreach($items as $item) {
-                    $nav[$item->getName()] = array(
+                    $name = $item->getName();
+                    $active = $item->isActive();
+                    $nav[$name] = array(
                         'Link' => $item->getLink(),
-                        'Active' => $item->isActive()
+                        'Active' => $active
                     );
+                    if ($active) {
+                        if ($name == 'LiveLink') $viewing = 'Live';
+                        if ($name == 'StageLink') $viewing = 'Draft';
+                        if ($name == 'ArchiveLink') $viewing = 'Archived';
+                    }
                 }
 
                 //Is the logged in member nominated as a developer?
@@ -49,6 +57,7 @@ class BetterNavigator extends DataExtension {
                 $bNData = array_merge($nav, array(
                     'Member' => $member,
                     'Stage' => Versioned::current_stage(),
+                    'Viewing' => $viewing, // What we're viewing doesn't necessarily align with the active Stage
                     'LoginLink' => Config::inst()->get('Security', 'login_url') . $backURL,
                     'LogoutLink' => 'Security/logout' . $backURL,
                     'Mode' => Director::get_environment_type(),

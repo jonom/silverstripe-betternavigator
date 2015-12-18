@@ -101,7 +101,7 @@ $archiveColor: #6f6f6f;
         }
     }
 
-    &.Stage {
+    &.Draft {
         background: $stageColor;
         border-color: shade($stageColor, 10);
 

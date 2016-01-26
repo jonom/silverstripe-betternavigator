@@ -22,7 +22,9 @@ class BetterNavigator extends DataExtension {
      *
      * @return string
      */
-    public function BetterNavigator() {
+    public function __construct() {
+        parent::__construct();
+        
         // Make sure this is a page
         if (!($this->owner && $this->owner->dataRecord && $this->owner->dataRecord instanceof SiteTree && $this->owner->dataRecord->ID > 0)) return false;
 

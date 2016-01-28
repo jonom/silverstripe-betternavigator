@@ -7,4 +7,4 @@ LeftAndMain:
     - 'betternavigator/javascript/BN.LeftAndMain.Preview.js'
 ContentController:
   extensions:
-    - BetterNavigator
+    - BetterNavigatorExtension

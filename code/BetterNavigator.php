@@ -54,7 +54,8 @@ class BetterNavigator extends DataExtension {
             // Is the logged in member nominated as a developer?
             $member = Member::currentUser();
             $devs = Config::inst()->get('BetterNavigator', 'developers');
-            $isDeveloper = $member && is_array($devs) ? in_array($member->Email, $devs) : false;
+            $identifierField = Member::config()->unique_identifier_field;
+            $isDeveloper = $member && is_array($devs) ? in_array($member->{$identifierField}, $devs) : false;
 
             // Add other data for template
             $backURL = '?BackURL=' . urlencode($this->owner->Link());

@@ -60,8 +60,10 @@
                 <% end_if %>
 
                 <a href="$Link?flush=1" title="Flush templates and manifest, and regenerate images for this page (behaviour varies by Framework version)"><span class="bn-icon-flush"></span>Flush caches</a>
-                <a href="dev/build/?flush=1" target="_blank" title="Build database and flush caches (excludes template caches pre SS-3.1.7)"><span class="bn-icon-db"></span>Build database</a>
-                <a href="dev" target="_blank"><span class="bn-icon-tools"></span>Dev menu</a>
+                <% with $BetterNavigator %>
+                <a href="{$LinkPrefix}dev/build/?flush=1" target="_blank" title="Build database and flush caches (excludes template caches pre SS-3.1.7)"><span class="bn-icon-db"></span>Build database</a>
+                <a href="{$LinkPrefix}dev" target="_blank"><span class="bn-icon-tools"></span>Dev menu</a>
+                <% end_with %>
 
             </div>
 

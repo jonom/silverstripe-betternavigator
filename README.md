@@ -32,6 +32,7 @@ Download, place the folder in your project root, rename it to 'betternavigator' 
 Just place **$BetterNavigator** somewhere in your template(s). If your website uses caching, make sure BetterNavigator's output is excluded.
 
 **Access developer tools on a live website**
+
 You can mark certain CMS users as developers in your site's config, so they can access developer tools when logged in. Example YAML:
 
 ```
@@ -39,6 +40,17 @@ You can mark certain CMS users as developers in your site's config, so they can 
     developers:
       - 'dev@yoursite.com'
       - 'otherdev@yoursite.com'
+```
+
+**Use absolute links**
+
+Some sites may opt to not use base tag in the page head (e.g. it could be problematic with hash links within a page).
+In that case you can use this YAML settings to force output of absolute links always starting with a slash.
+
+```
+  BetterNavigator:
+    developers:
+      useAbsoluteLinks: true
 ```
 
 ##Customisation

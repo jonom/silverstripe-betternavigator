@@ -17,6 +17,18 @@ class BetterNavigatorExtension extends DataExtension {
     private static $developers;
 
     /**
+     * Force use of absolute links starting with a slash for sites not using base tag
+     * Example YAML:
+     *
+     * BetterNavigator:
+     *   useAbsoluteLinks: true
+     *
+     * @config
+     * @var boolean
+     */
+    private static $useAbsoluteLinks = false;
+
+    /**
      * Provides a front-end utility menu with administrative functions and developer tools
      * Relies on SilverStripeNavigator
      *
@@ -30,6 +42,10 @@ class BetterNavigatorExtension extends DataExtension {
         $isDev = Director::isDev();
         $canViewDraft = (Permission::check('VIEW_DRAFT_CONTENT') || Permission::check('CMS_ACCESS_CMSMain'));
         if($isDev || $canViewDraft) {
+            // use absolute links
+            $useAbsLinks = Config::inst()->get('BetterNavigator', 'useAbsoluteLinks');
+            $linkPrefix = ($useAbsLinks ? '/' : '');
+
             // Get SilverStripeNavigator links & stage info (CMS/Stage/Live/Archive)
             $nav = array();
             $viewing = '';
@@ -39,8 +55,8 @@ class BetterNavigatorExtension extends DataExtension {
                 $name = $item->getName();
                 $active = $item->isActive();
                 $nav[$name] = array(
-                    'Link' => $item->getLink(),
-                    'Active' => $active
+                    'Link' => (($name == 'CMSLink') ? $linkPrefix : '') . $item->getLink(),
+                    'Active' => $active,
                 );
                 if ($active) {
                     if ($name == 'LiveLink') $viewing = 'Live';
@@ -54,8 +70,7 @@ class BetterNavigatorExtension extends DataExtension {
             // Is the logged in member nominated as a developer?
             $member = Member::currentUser();
             $devs = Config::inst()->get('BetterNavigator', 'developers');
-            $identifierField = Member::config()->unique_identifier_field;
-            $isDeveloper = $member && is_array($devs) ? in_array($member->{$identifierField}, $devs) : false;
+            $isDeveloper = $member && is_array($devs) ? in_array($member->Email, $devs) : false;
 
             // Add other data for template
             $backURL = '?BackURL=' . urlencode($this->owner->Link());
@@ -63,11 +78,12 @@ class BetterNavigatorExtension extends DataExtension {
                 'Member' => $member,
                 'Stage' => Versioned::current_stage(),
                 'Viewing' => $viewing, // What we're viewing doesn't necessarily align with the active Stage
-                'LoginLink' => Config::inst()->get('Security', 'login_url') . $backURL,
-                'LogoutLink' => 'Security/logout' . $backURL,
+                'LoginLink' => $linkPrefix . Config::inst()->get('Security', 'login_url') . $backURL,
+                'LogoutLink' => $linkPrefix . 'Security/logout' . $backURL,
                 'EditLink' => $editLink,
                 'Mode' => Director::get_environment_type(),
-                'IsDeveloper' => $isDeveloper
+                'IsDeveloper' => $isDeveloper,
+                'LinkPrefix' => $linkPrefix,
             ));
 
             // Merge with page data, send to template and render

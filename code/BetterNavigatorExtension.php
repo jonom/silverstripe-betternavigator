@@ -3,20 +3,6 @@
 class BetterNavigatorExtension extends DataExtension {
 
     /**
-     * Nominate developers who can access developer tools on live site
-     * Example YAML:
-     *
-     * BetterNavigator:
-     *   developers:
-     *     - 'dev@yoursite.com'
-     *     - 'otherdev@yoursite.com'
-     *
-     * @config
-     * @var array
-     */
-    private static $developers;
-
-    /**
      * Provides a front-end utility menu with administrative functions and developer tools
      * Relies on SilverStripeNavigator
      *

@@ -35,7 +35,7 @@ class BetterNavigatorExtension extends DataExtension {
                 }
             }
             // Only show edit link if user has permission to edit this page
-            $editLink = (($this->owner->dataRecord->canEdit() && Permission::check('CMS_ACCESS_CMSMain')) || $isDev) ? $nav['CMSLink']['Link'] : false;
+            $editLink = (($this->owner->dataRecord->canEdit() && Permission::check('CMS_ACCESS_CMSMain')) || $isDev) ? Controller::join_links('/', $nav['CMSLink']['Link']) : false;
 
             // Is the logged in member nominated as a developer?
             $member = Member::currentUser();
@@ -49,8 +49,8 @@ class BetterNavigatorExtension extends DataExtension {
                 'Member' => $member,
                 'Stage' => Versioned::current_stage(),
                 'Viewing' => $viewing, // What we're viewing doesn't necessarily align with the active Stage
-                'LoginLink' => Config::inst()->get('Security', 'login_url') . $backURL,
-                'LogoutLink' => 'Security/logout' . $backURL,
+                'LoginLink' => Controller::join_links('/', Config::inst()->get('Security', 'login_url'), $backURL),
+                'LogoutLink' => Controller::join_links('/Security/logout', $backURL),
                 'EditLink' => $editLink,
                 'Mode' => Director::get_environment_type(),
                 'IsDeveloper' => $isDeveloper

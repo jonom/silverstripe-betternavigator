@@ -1,6 +1,6 @@
 <?php
 
-class BetterNavigator extends DataExtension {
+class BetterNavigatorExtension extends DataExtension {
 
     /**
      * Nominate developers who can access developer tools on live site

@@ -1,5 +1,18 @@
 <?php
 
+namespace JonoM\BetterNavigator\Extension;
+
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\Security\Permission;
+use SilverStripe\CMS\Controllers\SilverStripeNavigator;
+use SilverStripe\Control\Director;
+use SilverStripe\Security\Member;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Control\Controller;
+use SilverStripe\View\ArrayData;
+use SilverStripe\ORM\Versioning\Versioned;
+use SilverStripe\CMS\Model\SiteTree;
+
 class BetterNavigatorExtension extends DataExtension {
 
     /**
@@ -9,19 +22,20 @@ class BetterNavigatorExtension extends DataExtension {
      * @return string
      */
     public function BetterNavigator() {
+
         // Make sure this is a page
         if (!($this->owner && $this->owner->dataRecord && $this->owner->dataRecord instanceof SiteTree && $this->owner->dataRecord->ID > 0)) return false;
 
         // Only show navigator to appropriate users
         $isDev = Director::isDev();
         $canViewDraft = (Permission::check('VIEW_DRAFT_CONTENT') || Permission::check('CMS_ACCESS_CMSMain'));
-        if($isDev || $canViewDraft) {
+        if ($isDev || $canViewDraft) {
             // Get SilverStripeNavigator links & stage info (CMS/Stage/Live/Archive)
             $nav = array();
             $viewing = '';
             $navigator = new SilverStripeNavigator($this->owner->dataRecord);
             $items = $navigator->getItems();
-            foreach($items as $item) {
+            foreach ($items as $item) {
                 $name = $item->getName();
                 $active = $item->isActive();
                 $nav[$name] = array(
@@ -47,7 +61,7 @@ class BetterNavigatorExtension extends DataExtension {
             $backURL = '?BackURL=' . urlencode($this->owner->Link());
             $bNData = array_merge($nav, array(
                 'Member' => $member,
-                'Stage' => Versioned::current_stage(),
+                'Stage' => Versioned::get_stage(),
                 'Viewing' => $viewing, // What we're viewing doesn't necessarily align with the active Stage
                 'LoginLink' => Controller::join_links(Director::absoluteBaseURL(), Config::inst()->get('Security', 'login_url'), $backURL),
                 'LogoutLink' => Controller::join_links(Director::absoluteBaseURL() . 'Security/logout', $backURL),
@@ -59,7 +73,7 @@ class BetterNavigatorExtension extends DataExtension {
             // Merge with page data, send to template and render
             $bNData = new ArrayData($bNData);
             $page = $this->owner->customise(array('BetterNavigator' => $bNData));
-            return $page->renderWith('BetterNavigator');
+            return $page->renderWith('BetterNavigator\\BetterNavigator');
         }
         return false;
     }

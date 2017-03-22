@@ -56,12 +56,12 @@
                 <% if $BetterNavigator.Mode='dev' %>
                     <span class="bn-disabled" title="Log out to end Dev Mode"><span class="bn-icon-tick"></span>Dev mode on</span>
                 <% else %>
-                    <a href="$Link?isDev=1"><span class="bn-icon-devmode"></span>Dev mode</a>
+                    <a href="{$AbsoluteLink}?isDev=1"><span class="bn-icon-devmode"></span>Dev mode</a>
                 <% end_if %>
 
-                <a href="$Link?flush=1" title="Flush templates and manifest, and regenerate images for this page (behaviour varies by Framework version)"><span class="bn-icon-flush"></span>Flush caches</a>
-                <a href="/dev/build/?flush=1" target="_blank" title="Build database and flush caches (excludes template caches pre SS-3.1.7)"><span class="bn-icon-db"></span>Build database</a>
-                <a href="/dev/" target="_blank"><span class="bn-icon-tools"></span>Dev menu</a>
+                <a href="{$AbsoluteLink}?flush=1" title="Flush templates and manifest, and regenerate images for this page (behaviour varies by Framework version)"><span class="bn-icon-flush"></span>Flush caches</a>
+                <a href="{$AbsoluteBaseURL}dev/build/?flush=1" target="_blank" title="Build database and flush caches (excludes template caches pre SS-3.1.7)"><span class="bn-icon-db"></span>Build database</a>
+                <a href="{$AbsoluteBaseURL}dev/" target="_blank"><span class="bn-icon-tools"></span>Dev menu</a>
 
             </div>
 
@@ -71,13 +71,13 @@
 
             <div class="bn-links">
 
-                <a href="$Link?showtemplate=1"><span class="bn-icon-info"></span>Show template</a>
-                <a href="$Link?debug=1&amp;isDev=1"><span class="bn-icon-info"></span>Debug page</a>
-                <a href="$Link?debugmethods=1"><span class="bn-icon-info"></span>Debug methods</a>
-                <a href="$Link?debug_request=1&amp;isDev=1"><span class="bn-icon-info"></span>Debug request</a>
-                <a href="$Link?debugfailover=1&amp;isDev=1"><span class="bn-icon-info"></span>Debug failover</a>
-                <a href="$Link?showqueries=1&amp;isDev=1"><span class="bn-icon-info"></span>Show queries</a>
-                <a href="$Link?previewwrite=1&amp;isDev=1"><span class="bn-icon-info"></span>Preview write</a>
+                <a href="{$AbsoluteLink}?showtemplate=1"><span class="bn-icon-info"></span>Show template</a>
+                <a href="{$AbsoluteLink}?debug=1&amp;isDev=1"><span class="bn-icon-info"></span>Debug page</a>
+                <a href="{$AbsoluteLink}?debugmethods=1"><span class="bn-icon-info"></span>Debug methods</a>
+                <a href="{$AbsoluteLink}?debug_request=1&amp;isDev=1"><span class="bn-icon-info"></span>Debug request</a>
+                <a href="{$AbsoluteLink}?debugfailover=1&amp;isDev=1"><span class="bn-icon-info"></span>Debug failover</a>
+                <a href="{$AbsoluteLink}?showqueries=1&amp;isDev=1"><span class="bn-icon-info"></span>Show queries</a>
+                <a href="{$AbsoluteLink}?previewwrite=1&amp;isDev=1"><span class="bn-icon-info"></span>Preview write</a>
 
             </div>
 

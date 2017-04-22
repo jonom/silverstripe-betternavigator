@@ -9,8 +9,8 @@ use SilverStripe\Control\Director;
 use SilverStripe\Security\Member;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Control\Controller;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
-use SilverStripe\ORM\Versioning\Versioned;
 use SilverStripe\CMS\Model\SiteTree;
 
 class BetterNavigatorExtension extends DataExtension {

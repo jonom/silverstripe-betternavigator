@@ -24,24 +24,24 @@ class BetterNavigatorExtension extends DataExtension {
     public function BetterNavigator() {
 
         // Make sure this is a page
-        if (!($this->owner && $this->owner->dataRecord && $this->owner->dataRecord instanceof SiteTree && $this->owner->dataRecord->ID > 0)) return false;
+        if (!$this->isAPage()) return false;
 
         // Only show navigator to appropriate users
         $isDev = Director::isDev();
         $canViewDraft = (Permission::check('VIEW_DRAFT_CONTENT') || Permission::check('CMS_ACCESS_CMSMain'));
         if ($isDev || $canViewDraft) {
             // Get SilverStripeNavigator links & stage info (CMS/Stage/Live/Archive)
-            $nav = array();
+            $nav = [];
             $viewing = '';
-            $navigator = new SilverStripeNavigator($this->owner->dataRecord);
+            $navigator = SilverStripeNavigator::create($this->owner->dataRecord);
             $items = $navigator->getItems();
             foreach ($items as $item) {
                 $name = $item->getName();
                 $active = $item->isActive();
-                $nav[$name] = array(
+                $nav[$name] = [
                     'Link' => $item->getLink(),
                     'Active' => $active
-                );
+                ];
                 if ($active) {
                     if ($name == 'LiveLink') $viewing = 'Live';
                     if ($name == 'StageLink') $viewing = 'Draft';
@@ -62,7 +62,7 @@ class BetterNavigatorExtension extends DataExtension {
 
             // Add other data for template
             $backURL = '?BackURL=' . urlencode($this->owner->Link());
-            $bNData = array_merge($nav, array(
+            $bNData = array_merge($nav, [
                 'Member' => $member,
                 'Stage' => Versioned::get_stage(),
                 'Viewing' => $viewing, // What we're viewing doesn't necessarily align with the active Stage
@@ -71,13 +71,20 @@ class BetterNavigatorExtension extends DataExtension {
                 'EditLink' => $editLink,
                 'Mode' => Director::get_environment_type(),
                 'IsDeveloper' => $isDeveloper
-            ));
+            ]);
 
             // Merge with page data, send to template and render
             $bNData = new ArrayData($bNData);
-            $page = $this->owner->customise(array('BetterNavigator' => $bNData));
+            $page = $this->owner->customise(['BetterNavigator' => $bNData]);
             return $page->renderWith('BetterNavigator\\BetterNavigator');
         }
         return false;
+    }
+
+    protected function isAPage() {
+        return $this->owner
+            && $this->owner->dataRecord
+            && $this->owner->dataRecord instanceof SiteTree
+            && $this->owner->dataRecord->ID > 0;
     }
 }

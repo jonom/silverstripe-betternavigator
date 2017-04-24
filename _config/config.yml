@@ -1,10 +1,10 @@
 ---
 Name: betternavigator
-After: 'framework/*','cms/*'
+After: 'framework/*, cms/*'
 ---
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   extra_requirements_javascript:
     - 'betternavigator/javascript/BN.LeftAndMain.Preview.js'
-ContentController:
+SilverStripe\CMS\Controllers\ContentController:
   extensions:
-    - BetterNavigatorExtension
+    - JonoM\BetterNavigator\Extension\BetterNavigatorExtension

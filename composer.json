@@ -22,6 +22,8 @@
         "installer-name": "betternavigator"
     },
     "autoload": {
-        "Jonom\\BetterNavigator\\": "src/"
+        "psr-4": {
+          "JonoM\\BetterNavigator\\": "src/"
+        }
     }
 }

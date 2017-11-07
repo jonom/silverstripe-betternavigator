@@ -1,0 +1,10 @@
+ru:
+ BetterNavigator:
+  Restore: "Востановить"
+  ViewLive: "Текущая Версия"
+  NotPublished: "Не опубликовано"
+  ViewDraft: "Черновик"
+  DeletedFromDraft: "Удалено из Черновика"
+  Edit: "Изменить"
+  LogOut: "Выйти из CMS"
+  LogIn: "Войти в CMS"

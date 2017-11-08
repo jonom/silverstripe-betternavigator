@@ -1,0 +1,10 @@
+en:
+ BetterNavigator:
+  Restore: "Restore"
+  ViewLive: "View live"
+  NotPublished: "Not yet published"
+  ViewDraft: "View draft"
+  DeletedFromDraft: "Deleted from draft site"
+  Edit: "Edit in CMS"
+  LogOut: "Log out"
+  LogIn: "Log in"

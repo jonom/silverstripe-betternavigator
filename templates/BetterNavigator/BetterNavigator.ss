@@ -17,29 +17,29 @@
 
             <% with $BetterNavigator %>
                 <% if $ArchiveLink.Active %>
-                    <% if $EditLink %><a href="$EditLink" target="_blank"><span class="bn-icon-edit"></span>Restore</a><% end_if %>
+                    <% if $EditLink %><a href="$EditLink" target="_blank"><span class="bn-icon-edit"></span><%t BetterNavigator.Restore 'Restore' %></a><% end_if %>
                 <% else %>
                     <% if not $LiveLink.Active %>
                         <% if $LiveLink.Link %>
-                            <a href="$LiveLink.Link"><span class="bn-icon-view"></span>View live</a>
+                            <a href="$LiveLink.Link"><span class="bn-icon-view"></span><%t BetterNavigator.ViewLive 'View live' %></a>
                         <% else %>
-                            <span class="bn-disabled"><span class="bn-icon-view"></span>Not yet published</span>
+                            <span class="bn-disabled"><span class="bn-icon-view"></span><%t BetterNavigator.NotPublished 'Not yet published' %></span>
                         <% end_if %>
                     <% end_if %>
                     <% if not $StageLink.Active %>
                         <% if $StageLink.Link %>
-                            <a href="$StageLink.Link"><span class="bn-icon-view"></span>View draft</a>
+                            <a href="$StageLink.Link"><span class="bn-icon-view"></span><%t BetterNavigator.ViewDraft 'View draft' %></a>
                         <% else %>
-                            <span class="bn-disabled"><span class="bn-icon-view"></span>Deleted from draft site</span>
+                            <span class="bn-disabled"><span class="bn-icon-view"></span><%t BetterNavigator.DeletedFromDraft 'Deleted from draft site' %></span>
                         <% end_if %>
                     <% end_if %>
-                    <% if $EditLink %><a href="$EditLink" target="_blank"><span class="bn-icon-edit"></span>Edit in CMS</a><% end_if %>
+                    <% if $EditLink %><a href="$EditLink" target="_blank"><span class="bn-icon-edit"></span><%t BetterNavigator.Edit 'Edit in CMS' %></a><% end_if %>
                 <% end_if %>
 
                 <% if $Member %>
-                    <a href="$LogoutLink"><span class="bn-icon-user"></span>Log out<% if $Member.FirstName %><span class="light"> ($Member.FirstName)</span><% end_if %></a>
+                    <a href="$LogoutLink"><span class="bn-icon-user"></span><%t BetterNavigator.LogOut 'Log out' %><% if $Member.FirstName %><span class="light"> ($Member.FirstName)</span><% end_if %></a>
                 <% else %>
-                    <a href="$LoginLink"><span class="bn-icon-user"></span>Log in</a>
+                    <a href="$LoginLink"><span class="bn-icon-user"></span><%t BetterNavigator.LogIn 'Log in' %></a>
                 <% end_if %>
             <% end_with %>
 

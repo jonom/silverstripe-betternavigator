@@ -7,6 +7,8 @@ use SilverStripe\Security\Permission;
 use SilverStripe\CMS\Controllers\SilverStripeNavigator;
 use SilverStripe\Control\Director;
 use SilverStripe\Security\Member;
+use SilverStripe\Security\Security;
+use SilverStripe\Security\LogoutForm;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Control\Controller;
 use SilverStripe\Versioned\Versioned;
@@ -66,8 +68,9 @@ class BetterNavigatorExtension extends DataExtension {
                 'Member' => $member,
                 'Stage' => Versioned::get_stage(),
                 'Viewing' => $viewing, // What we're viewing doesn't necessarily align with the active Stage
-                'LoginLink' => Controller::join_links(Director::absoluteBaseURL(), Config::inst()->get('Security', 'login_url'), $backURL),
-                'LogoutLink' => Controller::join_links(Director::absoluteBaseURL() . 'Security/logout', $backURL),
+                'LoginLink' => Controller::join_links(Director::absoluteBaseURL(), Security::config()->login_url, $backURL),
+                'LogoutLink' => Controller::join_links(Director::absoluteBaseURL() . Security::config()->logout_url, $backURL),
+                'LogoutForm' => LogoutForm::create($this->owner)->setName('BetterNavigatorLogoutForm'),
                 'EditLink' => $editLink,
                 'Mode' => Director::get_environment_type(),
                 'IsDeveloper' => $isDeveloper

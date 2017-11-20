@@ -27,6 +27,10 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
         text-decoration: none;
     }
 
+    form {
+        display:none;
+    }
+
     //Toggle states
 
     &.collapsed {
@@ -164,7 +168,7 @@ $archiveColor: #6f6f6f;
     }
 }
 
-//Some hlep for debugging info
+//Some help for debugging info
 body > p.message {
     text-align: left;
     background: #fff;

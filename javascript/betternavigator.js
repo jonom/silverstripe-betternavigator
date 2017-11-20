@@ -1,4 +1,4 @@
-//For reading cookies
+// For reading cookies
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -15,21 +15,29 @@ function getCookie(cname) {
 }
 
 function initialiseBetterNavigator() {
-    //Dom elements
+    // Dom elements
     var BetterNavigator = document.getElementById("BetterNavigator");
     var BetterNavigatorStatus = document.getElementById("BetterNavigatorStatus");
+    var BetterNavigatorLogoutLink = document.getElementById("BetterNavigatorLogoutLink");
+    var BetterNavigatorLogoutForm = document.getElementById("LogoutForm_BetterNavigatorLogoutForm");
 
-    //Toggle visibility of menu by clicking status
+    // Toggle visibility of menu by clicking status
     BetterNavigatorStatus.onclick = function () {
         BetterNavigator.className = BetterNavigator.className === 'collapsed' ? 'open' : 'collapsed';
         //Set cookie to remember state
         document.cookie = "BetterNavigator=" + BetterNavigator.className + ";path=/";
     };
 
-    //Restore menu state
+    // Restore menu state
     if (getCookie('BetterNavigator') === 'open') {
         BetterNavigator.className = 'open';
     }
+    
+    // Upgrade logout link to directly log users out instead of redirecting to logout form
+    BetterNavigatorLogoutLink.onclick = function (e) {
+        e.preventDefault();
+        BetterNavigatorLogoutForm.submit();
+    };
 }
 
 if (document.addEventListener && document.readyState === 'loading') {

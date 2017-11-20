@@ -37,7 +37,8 @@
                 <% end_if %>
 
                 <% if $Member %>
-                    <a href="$LogoutLink"><span class="bn-icon-user"></span>Log out<% if $Member.FirstName %><span class="light"> ($Member.FirstName)</span><% end_if %></a>
+                    $LogoutForm
+                    <a href="$LogoutLink" id="BetterNavigatorLogoutLink"><span class="bn-icon-user"></span>Log out<% if $Member.FirstName %><span class="light"> ($Member.FirstName)</span><% end_if %></a>
                 <% else %>
                     <a href="$LoginLink"><span class="bn-icon-user"></span>Log in</a>
                 <% end_if %>

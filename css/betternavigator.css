@@ -26,6 +26,7 @@ span[class^='bn-icon'], span[class*=' bn-icon'] { display: inline-block; }
 
 #BetterNavigator { position: fixed; top: 0; right: 0; z-index: 99999; max-height: 100%; overflow: auto; font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height: 16px; text-align: left; }
 #BetterNavigator a { text-decoration: none; }
+#BetterNavigator form { display: none; }
 #BetterNavigator.collapsed { box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); -moz-transform-origin: right top; -ms-transform-origin: right top; -webkit-transform-origin: right top; transform-origin: right top; -moz-transform: rotate(90deg) translate(100%, 0); -ms-transform: rotate(90deg) translate(100%, 0); -webkit-transform: rotate(90deg) translate(100%, 0); transform: rotate(90deg) translate(100%, 0); border-width: 0 1px 1px 0; }
 #BetterNavigator.collapsed #BetterNavigatorStatus { border-width: 0 1px 1px 0; }
 #BetterNavigator.collapsed #BetterNavigatorStatus .bn-icon-close { display: none; }

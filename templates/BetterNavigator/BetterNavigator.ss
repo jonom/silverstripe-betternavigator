@@ -45,7 +45,7 @@
 
         </div>
 
-        <% include BetterNavigatorExtraContent %>
+        <% include BetterNavigator\BetterNavigatorExtraContent %>
 
         <% if $BetterNavigator.Mode=='dev' || $BetterNavigator.IsDeveloper %>
 
@@ -65,7 +65,7 @@
 
             </div>
 
-            <% include BetterNavigatorExtraDevTools %>
+            <% include BetterNavigator\BetterNavigatorExtraDevTools %>
 
             <div class="bn-heading">Debugging</div>
 
@@ -81,7 +81,7 @@
 
             </div>
 
-            <% include BetterNavigatorExtraDebugging %>
+            <% include BetterNavigator\BetterNavigatorExtraDebugging %>
 
         <% end_if %>
 

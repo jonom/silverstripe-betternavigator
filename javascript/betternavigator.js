@@ -32,13 +32,13 @@ function initialiseBetterNavigator() {
     }
 }
 
-if (document.addEventListener) {
+if (document.addEventListener && document.readyState === 'loading') {
     document.addEventListener("DOMContentLoaded", function () {
-        //wait til DOM is ready
+        // wait til DOM finishes loading
         initialiseBetterNavigator();
     });
 } else {
-    //This is the case for IE8 and below
-    //initialise straight away - fine if script is loaded after BN dom element
+    // This is the case for IE8 and below OR already loaded document (e.g. when using async)
+    // initialise straight away - fine if script is loaded after BN dom element
     initialiseBetterNavigator();
 }

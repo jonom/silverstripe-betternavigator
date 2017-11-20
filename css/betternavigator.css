@@ -52,5 +52,3 @@ span[class^='bn-icon'], span[class*=' bn-icon'] { display: inline-block; }
 #BetterNavigatorContent span.bn-disabled { background: #afbac0; color: #51565a; cursor: default; }
 
 body > p.message { text-align: left; background: #fff; color: #222; padding: 10px 20px; margin: 0; border-bottom: 1px solid #ccc; border-left: 5px solid #1d8aff; }
-
-/*# sourceMappingURL=betternavigator.css.map */

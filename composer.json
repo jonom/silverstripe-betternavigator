@@ -1,7 +1,7 @@
 {
     "name": "jonom/silverstripe-betternavigator",
     "description": "Front-end utility menu for SilverStripe websites featuring administration and development tools",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "keywords": [
         "silverstripe",
         "navigator",
@@ -19,7 +19,12 @@
         "silverstripe/framework": "^4.0"
     },
     "extra": {
-        "installer-name": "betternavigator"
+        "installer-name": "betternavigator",
+        "expose": [
+            "css",
+            "images",
+            "javascript"
+        ]
     },
     "autoload": {
         "psr-4": {

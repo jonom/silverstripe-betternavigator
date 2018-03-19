@@ -32,12 +32,14 @@ function initialiseBetterNavigator() {
     if (getCookie('BetterNavigator') === 'open') {
         BetterNavigator.className = 'open';
     }
-    
-    // Upgrade logout link to directly log users out instead of redirecting to logout form
-    BetterNavigatorLogoutLink.onclick = function (e) {
-        e.preventDefault();
-        BetterNavigatorLogoutForm.submit();
-    };
+
+    if (BetterNavigatorLogoutForm) {
+        // Upgrade logout link to directly log users out instead of redirecting to logout form
+        BetterNavigatorLogoutLink.onclick = function (e) {
+            e.preventDefault();
+            BetterNavigatorLogoutForm.submit();
+        };
+    }
 }
 
 if (document.addEventListener && document.readyState === 'loading') {

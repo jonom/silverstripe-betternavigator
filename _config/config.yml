@@ -4,7 +4,7 @@ After: 'framework/*, cms/*'
 ---
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_javascript:
-    - 'betternavigator/javascript/BN.LeftAndMain.Preview.js'
+    - 'jonom/silverstripe-betternavigator: javascript/BN.LeftAndMain.Preview.js'
 SilverStripe\CMS\Controllers\ContentController:
   extensions:
     - JonoM\BetterNavigator\Extension\BetterNavigatorExtension

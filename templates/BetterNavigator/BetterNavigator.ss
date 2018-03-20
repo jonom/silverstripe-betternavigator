@@ -1,5 +1,5 @@
-<% require javascript("betternavigator/javascript/betternavigator.js") %>
-<% require css("betternavigator/css/betternavigator.css") %>
+<% require javascript("jonom/silverstripe-betternavigator: javascript/betternavigator.js") %>
+<% require css("jonom/silverstripe-betternavigator: css/betternavigator.css") %>
 
 <div id="BetterNavigator" class="collapsed">
 

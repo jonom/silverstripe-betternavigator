@@ -51,10 +51,9 @@ class BetterNavigatorExtension extends DataExtension {
                 }
             }
             // Only show edit link if user has permission to edit this page
-			$editLink = array_key_exists('CMSLink', $nav)
-				&& ($isDev || $this->owner->dataRecord->canEdit() && Permission::check('CMS_ACCESS_CMSMain'))
-                ? $nav['CMSLink']['Link']
-                : '';
+            $editLink = array_key_exists('CMSLink', $nav)
+                && ($isDev || $this->owner->dataRecord->canEdit() && Permission::check('CMS_ACCESS_CMSMain'))
+                ? $nav['CMSLink']['Link'] : false;
 
             // Is the logged in member nominated as a developer?
             $member = Member::currentUser();

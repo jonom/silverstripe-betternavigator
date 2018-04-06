@@ -2,18 +2,18 @@
 
 namespace JonoM\BetterNavigator\Extension;
 
-use SilverStripe\ORM\DataExtension;
-use SilverStripe\Security\Permission;
 use SilverStripe\CMS\Controllers\SilverStripeNavigator;
-use SilverStripe\Control\Director;
-use SilverStripe\Security\Member;
-use SilverStripe\Security\Security;
-use SilverStripe\Security\LogoutForm;
-use SilverStripe\Core\Config\Config;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\Security\LogoutForm;
+use SilverStripe\Security\Member;
+use SilverStripe\Security\Permission;
+use SilverStripe\Security\Security;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
-use SilverStripe\CMS\Model\SiteTree;
 
 class BetterNavigatorExtension extends DataExtension {
 
@@ -51,10 +51,9 @@ class BetterNavigatorExtension extends DataExtension {
                 }
             }
             // Only show edit link if user has permission to edit this page
-            $editLink = false;
-            if ($this->owner->dataRecord->canEdit() && Permission::check('CMS_ACCESS_CMSMain') || $isDev) {
-                $editLink = $nav['CMSLink']['Link'];
-            }
+            $editLink = array_key_exists('CMSLink', $nav)
+                && ($isDev || $this->owner->dataRecord->canEdit() && Permission::check('CMS_ACCESS_CMSMain'))
+                ? $nav['CMSLink']['Link'] : false;
 
             // Is the logged in member nominated as a developer?
             $member = Member::currentUser();

@@ -17,7 +17,7 @@ This module is intended to replicate and expand upon the functionality provided 
 
 ## Requirements
 
-SilverStripe 4.0 (3.1+ through previous releases)
+SilverStripe 4.2 (3.1+ through previous releases)
 
 ## Installation
 
@@ -29,7 +29,9 @@ Download, place the folder in your project root, rename it to 'betternavigator' 
 
 ## How to use
 
-Just place **$BetterNavigator** somewhere in your template(s). If your website uses caching, make sure BetterNavigator's output is excluded.
+The navigator is auto-injected into your template, and no code changes are needed.
+
+If your website uses caching, make sure BetterNavigator's output is excluded.
 
 **Access developer tools on a live website**
 You can mark certain CMS users as developers in your site's config, so they can access developer tools when logged in. Example YAML:

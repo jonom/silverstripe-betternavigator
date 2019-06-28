@@ -8,22 +8,40 @@ use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\Security\LogoutForm;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Security;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
+use SilverStripe\ORM\FieldType\DBHTMLText;
 
-class BetterNavigatorExtension extends DataExtension {
+class BetterNavigatorExtension extends DataExtension
+{
+
+    /**
+     * @var string
+     */
+    private $navigatorHTML;
+
+    /**
+     * Noop, pseudo backward compatability only
+     * @return DBHTMLText
+     */
+    public function BetterNavigator()
+    {
+    	return DBField::create_field('HTMLText', '');
+    }
 
     /**
      * Provides a front-end utility menu with administrative functions and developer tools
      * Relies on SilverStripeNavigator
      *
-     * @return string
+     * @return DBHTMLText|false
      */
-    public function BetterNavigator() {
+    protected function generateNavigator()
+    {
 
         // Make sure this is a page
         if (!$this->isAPage()) return false;
@@ -83,7 +101,48 @@ class BetterNavigatorExtension extends DataExtension {
         return false;
     }
 
-    protected function isAPage() {
+    /**
+     * Prerender HTML to ensure that <% require %> gets loaded
+     * @return void
+     */
+    public function beforeCallActionHandler(): void
+    {
+        $navigator = $this->generateNavigator();
+        if ($navigator) {
+            $this->navigatorHTML = $navigator->getValue();
+        }
+    }
+
+    /**
+     * @param $request
+     * @param $action
+     * @param DBHTMLText $result
+     * @return DBHTMLText
+     */
+    public function afterCallActionHandler($request, $action, $result): DBHTMLText
+    {
+        if (!$this->navigatorHTML) {
+            return $result;
+        }
+
+        $html = $result->getValue();
+
+        // Inject the NavigatorHTML before the closing </body> tag
+        $html = preg_replace(
+            '/(<\/body[^>]*>)/i',
+            $this->navigatorHTML . '\\1',
+            $html
+        );
+        $result->setValue($html);
+
+        return $result;
+    }    
+
+    /**
+     * @return boolean
+     */
+    protected function isAPage()
+    {
         return $this->owner
             && $this->owner->dataRecord
             && $this->owner->dataRecord instanceof SiteTree

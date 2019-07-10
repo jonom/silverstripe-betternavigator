@@ -42,9 +42,10 @@ class BetterNavigatorExtension extends DataExtension
      */
     protected function generateNavigator()
     {
-
         // Make sure this is a page
-        if (!$this->isAPage()) return false;
+        if (!$this->isAPage() || !$this->owner->showBetterNavigator()) {
+            return false;
+        }
 
         // Only show navigator to appropriate users
         $isDev = Director::isDev();
@@ -94,10 +95,11 @@ class BetterNavigatorExtension extends DataExtension
             ]);
 
             // Merge with page data, send to template and render
-            $bNData = new ArrayData($bNData);
-            $page = $this->owner->customise(['BetterNavigator' => $bNData]);
-            return $page->renderWith('BetterNavigator\\BetterNavigator');
+            $navigator = new ArrayData($bNData);
+
+            return $navigator->renderWith('BetterNavigator\\BetterNavigator');
         }
+
         return false;
     }
 
@@ -136,7 +138,16 @@ class BetterNavigatorExtension extends DataExtension
         $result->setValue($html);
 
         return $result;
-    }    
+    }
+
+    /**
+     * Override on a per-controller basis to add custom logic
+     * @return bool
+     */
+    public function showBetterNavigator(): bool
+    {
+        return true;
+    }
 
     /**
      * @return boolean

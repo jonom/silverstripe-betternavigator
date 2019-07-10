@@ -33,6 +33,18 @@ The navigator is auto-injected into your template, and no code changes are neede
 
 If your website uses caching, make sure BetterNavigator's output is excluded.
 
+## Disabling the navigator
+
+You can disable the navigator using your own custom logic by defining a `showBetterNavigator(): bool`
+method in any controller with the extension applied.
+
+```php
+public function showBetterNavigator(): bool
+{
+    // A user-defined setting
+    return $this->ShowDebugTools;
+}
+```
 **Access developer tools on a live website**
 You can mark certain CMS users as developers in your site's config, so they can access developer tools when logged in. Example YAML:
 

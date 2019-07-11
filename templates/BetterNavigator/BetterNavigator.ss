@@ -1,6 +1,3 @@
-<% require javascript("jonom/silverstripe-betternavigator: javascript/betternavigator.js") %>
-<% require css("jonom/silverstripe-betternavigator: css/betternavigator.css") %>
-
 <div id="BetterNavigator" class="collapsed">
 
         <div id="BetterNavigatorStatus" class="$Viewing">

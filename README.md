@@ -17,7 +17,7 @@ This module is intended to replicate and expand upon the functionality provided 
 
 ## Requirements
 
-SilverStripe 4.2 (3.1+ through previous releases)
+SilverStripe 4.3 (3.1+ through previous releases)
 
 ## Installation
 

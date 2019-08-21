@@ -39,7 +39,7 @@ You can disable the navigator using your own custom logic by defining a `showBet
 method in any controller with the extension applied.
 
 ```php
-public function showBetterNavigator(): bool
+public function showBetterNavigator()
 {
     // A user-defined setting
     return $this->ShowDebugTools;
@@ -68,10 +68,6 @@ If you want to add some content (new buttons for instance) to BetterNavigator, j
 All content, scripts and CSS are loaded via the BetterNavigator.ss template, so you can completely customise BetterNavigator's front-end code by copying or creating your own BetterNavigator.ss template.
 
 The BetterNavigator.ss template's scope is set to the page that is being viewed, so any methods available in your page controller will be available in the BetterNavigator.ss template. This should allow you to add custom links by page type and introduce complex logic if you want to.
-
-## Known issues
-
- * Probably won't work in IE8 or lower.
 
 ## Bonus: better debugging tools
 

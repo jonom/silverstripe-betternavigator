@@ -30,7 +30,7 @@ class BetterNavigatorExtension extends DataExtension
      * Load requirements in before final render. When the next extension point is called, it's too late.
      * @return void
      */
-    public function beforeCallActionHandler(): void
+    public function beforeCallActionHandler()
     {
         if ($this->shouldDisplay()) {
             Requirements::javascript('jonom/silverstripe-betternavigator: javascript/betternavigator.js');
@@ -44,7 +44,7 @@ class BetterNavigatorExtension extends DataExtension
      * @param DBHTMLText $result
      * @return DBHTMLText
      */
-    public function afterCallActionHandler($request, $action, $result): DBHTMLText
+    public function afterCallActionHandler($request, $action, $result)
     {
         if (!$this->shouldDisplay()) {
             return $result;
@@ -68,7 +68,7 @@ class BetterNavigatorExtension extends DataExtension
      * Override on a per-controller basis to add custom logic
      * @return bool
      */
-    public function showBetterNavigator(): bool
+    public function showBetterNavigator()
     {
         return true;
     }
@@ -79,7 +79,7 @@ class BetterNavigatorExtension extends DataExtension
      *
      * @return DBHTMLText
      */
-    private function generateNavigator(): DBHTMLText
+    private function generateNavigator()
     {
         // Get SilverStripeNavigator links & stage info (CMS/Stage/Live/Archive)
         $nav = [];
@@ -136,7 +136,7 @@ class BetterNavigatorExtension extends DataExtension
      * Internally compute and cache weather the navigator should display
      * @return bool
      */
-    private function shouldDisplay(): bool
+    private function shouldDisplay()
     {
         if ($this->shouldDisplay !== null) {
             return $this->shouldDisplay;
@@ -157,7 +157,7 @@ class BetterNavigatorExtension extends DataExtension
     /**
      * @return boolean
      */
-    private function isAPage(): bool
+    private function isAPage()
     {
         return $this->owner
             && $this->owner->dataRecord

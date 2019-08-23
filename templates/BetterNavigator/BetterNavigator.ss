@@ -61,17 +61,21 @@
 
             <% include BetterNavigator\BetterNavigatorExtraDevTools %>
 
+        <% end_if %>
+
+        <% if $Mode=='dev' %>
+
             <div class="bn-heading">Debugging</div>
 
             <div class="bn-links">
 
                 <a href="{$AbsoluteLink}?showtemplate=1"><span class="bn-icon-info"></span>Show template</a>
-                <a href="{$AbsoluteLink}?debug=1&amp;isDev=1"><span class="bn-icon-info"></span>Debug page</a>
-                <a href="{$AbsoluteLink}?debugmethods=1"><span class="bn-icon-info"></span>Debug methods</a>
-                <a href="{$AbsoluteLink}?debug_request=1&amp;isDev=1"><span class="bn-icon-info"></span>Debug request</a>
-                <a href="{$AbsoluteLink}?debugfailover=1&amp;isDev=1"><span class="bn-icon-info"></span>Debug failover</a>
-                <a href="{$AbsoluteLink}?showqueries=1&amp;isDev=1"><span class="bn-icon-info"></span>Show queries</a>
-                <a href="{$AbsoluteLink}?previewwrite=1&amp;isDev=1"><span class="bn-icon-info"></span>Preview write</a>
+                <a href="{$AbsoluteLink}?execmetric=1"><span class="bn-icon-info"></span>Show metrics</a>
+                <a href="{$AbsoluteLink}?debug=1"><span class="bn-icon-info"></span>Debug page</a>
+                <a href="{$AbsoluteLink}?debug_request=1"><span class="bn-icon-info"></span>Debug request</a>
+                <a href="{$AbsoluteLink}?debugfailover=1"><span class="bn-icon-info"></span>Debug failover</a>
+                <a href="{$AbsoluteLink}?showqueries=1"><span class="bn-icon-info"></span>Show queries</a>
+                <a href="{$AbsoluteLink}?previewwrite=1"><span class="bn-icon-info"></span>Preview write</a>
 
             </div>
 

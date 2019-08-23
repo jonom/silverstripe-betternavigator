@@ -17,7 +17,7 @@ This module is intended to replicate and expand upon the functionality provided 
 
 ## Requirements
 
-SilverStripe 4.3 (3.1+ through previous releases)
+SilverStripe 4.0 (3.1+ through previous releases)
 
 ## Installation
 
@@ -57,18 +57,16 @@ You can mark certain CMS users as developers in your site's config, so they can 
 
 ## Customisation
 
-BetterNavigator's output is controlled by templates so it can be [easily overridden](http://doc.silverstripe.org/framework/en/topics/theme-development# overriding).
+BetterNavigator's output is controlled by templates so it can be [easily overridden](http://doc.silverstripe.org/framework/en/topics/theme-development#overriding).
 
-#### Option 1: Add some stuff
+Some empty `<% include %>` placeholders are included to let you easily add more content (new buttons for instance). Just create any of these templates in your theme or app directory and add your content:
 
-If you want to add some content (new buttons for instance) to BetterNavigator, just create a template called *BetterNavigatorExtraContent.ss* or *BetterNavigatorExtraDevTools.ss* and add your content to it. Place the template in the includes folder for your website's theme, or in *mysite/templates/includes/* if you want to use it across multiple themes.
-
-#### Option 2: Complete control
-
-All content, scripts and CSS are loaded via the BetterNavigator.ss template, so you can completely customise BetterNavigator's front-end code by copying or creating your own BetterNavigator.ss template.
+* *templates/JonoM/BetterNavigator/Includes/* BetterNavigatorExtraContent.ss
+* *templates/JonoM/BetterNavigator/Includes/* BetterNavigatorExtraDebugging.ss
+* *templates/JonoM/BetterNavigator/Includes/* BetterNavigatorExtraDevTools.ss
 
 The BetterNavigator.ss template's scope is set to the page that is being viewed, so any methods available in your page controller will be available in the BetterNavigator.ss template. This should allow you to add custom links by page type and introduce complex logic if you want to.
 
 ## Bonus: better debugging tools
 
-This module provide quick access to SilverStripe's built in [URL Variable Tools](http://doc.silverstripe.org/framework/en/reference/urlvariabletools) but reading their output isn't much fun. You can peek under SilverStripe's hood much more conveniently using the recently released [SilverStripe Clockwork](https://github.com/markguinn/silverstripe-clockwork) by Mark Guinn. Out of the box SQL Queries and controller events are logged. It's Chrome only for now.
+This module provide quick access to SilverStripe's built in [URL Variable Tools](http://doc.silverstripe.org/framework/en/reference/urlvariabletools) but reading their output isn't much fun. You can peek under SilverStripe's hood much more conveniently using lekoala's [SilverStripe DebugBar](https://github.com/lekoala/silverstripe-debugbar)

@@ -1,21 +1,15 @@
-<% require javascript("jonom/silverstripe-betternavigator: javascript/betternavigator.js") %>
-<% require css("jonom/silverstripe-betternavigator: css/betternavigator.css") %>
-
 <div id="BetterNavigator" class="collapsed">
 
-    <% with $BetterNavigator %>
         <div id="BetterNavigatorStatus" class="$Viewing">
             <span class="bn-icon-cog"></span>
             $Viewing
             <span class="bn-icon-close"></span>
         </div>
-    <% end_with %>
 
     <div id="BetterNavigatorContent">
 
         <div class="bn-links">
 
-            <% with $BetterNavigator %>
                 <% if $ArchiveLink.Active %>
                     <% if $EditLink %><a href="$EditLink" target="_blank"><span class="bn-icon-edit"></span>Restore</a><% end_if %>
                 <% else %>
@@ -42,19 +36,18 @@
                 <% else %>
                     <a href="$LoginLink"><span class="bn-icon-user"></span>Log in</a>
                 <% end_if %>
-            <% end_with %>
 
         </div>
 
         <% include BetterNavigator\BetterNavigatorExtraContent %>
 
-        <% if $BetterNavigator.Mode=='dev' || $BetterNavigator.IsDeveloper %>
+        <% if $Mode=='dev' || $IsDeveloper %>
 
             <div class="bn-heading">Developer tools</div>
 
             <div class="bn-links">
 
-                <% if $BetterNavigator.Mode='dev' %>
+                <% if $Mode='dev' %>
                     <span class="bn-disabled" title="Log out to end Dev Mode"><span class="bn-icon-tick"></span>Dev mode on</span>
                 <% else %>
                     <a href="{$AbsoluteLink}?isDev=1"><span class="bn-icon-devmode"></span>Dev mode</a>

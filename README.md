@@ -17,7 +17,7 @@ This module is intended to replicate and expand upon the functionality provided 
 
 ## Requirements
 
-SilverStripe 4.0 (3.1+ through previous releases)
+SilverStripe 4.3 (3.1+ through previous releases)
 
 ## Installation
 
@@ -29,8 +29,22 @@ Download, place the folder in your project root, rename it to 'betternavigator' 
 
 ## How to use
 
-Just place **$BetterNavigator** somewhere in your template(s). If your website uses caching, make sure BetterNavigator's output is excluded.
+The navigator is auto-injected into your template, and no code changes are needed.
 
+If your website uses caching, make sure BetterNavigator's output is excluded.
+
+## Disabling the navigator
+
+You can disable the navigator using your own custom logic by defining a `showBetterNavigator(): bool`
+method in any controller with the extension applied.
+
+```php
+public function showBetterNavigator()
+{
+    // A user-defined setting
+    return $this->ShowDebugTools;
+}
+```
 **Access developer tools on a live website**
 You can mark certain CMS users as developers in your site's config, so they can access developer tools when logged in. Example YAML:
 
@@ -54,10 +68,6 @@ If you want to add some content (new buttons for instance) to BetterNavigator, j
 All content, scripts and CSS are loaded via the BetterNavigator.ss template, so you can completely customise BetterNavigator's front-end code by copying or creating your own BetterNavigator.ss template.
 
 The BetterNavigator.ss template's scope is set to the page that is being viewed, so any methods available in your page controller will be available in the BetterNavigator.ss template. This should allow you to add custom links by page type and introduce complex logic if you want to.
-
-## Known issues
-
- * Probably won't work in IE8 or lower.
 
 ## Bonus: better debugging tools
 

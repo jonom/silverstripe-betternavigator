@@ -114,13 +114,15 @@ class BetterNavigatorExtension extends DataExtension
 
         // Add other data for template
         $backURL = '?BackURL=' . urlencode($this->owner->Link());
+        $logoutForm = LogoutForm::create($this->owner)->setName('BetterNavigatorLogoutForm');
+        $logoutForm->Fields()->fieldByName('BackURL')->setValue($this->owner->Link());
         $bNData = array_merge($nav, [
             'Member' => $member,
             'Stage' => Versioned::get_stage(),
             'Viewing' => $viewing, // What we're viewing doesn't necessarily align with the active Stage
             'LoginLink' => Controller::join_links(Director::absoluteBaseURL(), Security::config()->login_url, $backURL),
             'LogoutLink' => Controller::join_links(Director::absoluteBaseURL() . Security::config()->logout_url, $backURL),
-            'LogoutForm' => LogoutForm::create($this->owner)->setName('BetterNavigatorLogoutForm'),
+            'LogoutForm' => $logoutForm,
             'EditLink' => $editLink,
             'Mode' => Director::get_environment_type(),
             'IsDeveloper' => $isDeveloper

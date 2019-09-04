@@ -50,6 +50,10 @@ class BetterNavigatorExtension extends DataExtension
             return $result;
         }
 
+        if (!($result instanceof DBHTMLText)) {
+            return $result;
+        }
+
         $html = $result->getValue();
         $navigatorHTML = $this->generateNavigator()->getValue();
 

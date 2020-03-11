@@ -86,3 +86,6 @@
     </div>
 
 </div>
+
+<script type="application/javascript" src="$ScriptUrl"></script>
+<link rel="stylesheet" href="$CssUrl" />

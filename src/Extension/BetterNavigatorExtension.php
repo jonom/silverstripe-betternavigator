@@ -6,9 +6,10 @@ use SilverStripe\CMS\Controllers\SilverStripeNavigator;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
+use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Manifest\ModuleLoader;
 use SilverStripe\ORM\DataExtension;
-use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\Security\LogoutForm;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
@@ -27,34 +28,25 @@ class BetterNavigatorExtension extends DataExtension
     private $shouldDisplay = null;
 
     /**
-     * Load requirements in before final render. When the next extension point is called, it's too late.
-     * @return void
-     */
-    public function beforeCallActionHandler()
-    {
-        if ($this->shouldDisplay()) {
-            Requirements::javascript('jonom/silverstripe-betternavigator: javascript/betternavigator.js');
-            Requirements::css('jonom/silverstripe-betternavigator: css/betternavigator.css');
-        }
-    }
-
-    /**
      * @param $request
      * @param $action
-     * @param DBHTMLText $result
-     * @return DBHTMLText
+     * @param DBHTMLText|HTTPResponse  $result (actually could be anything such as a string, controller or object)
+     * @return DBHTMLText|HTTPResponse
      */
     public function afterCallActionHandler($request, $action, $result)
     {
-        if (!$this->shouldDisplay()) {
+        // Known issue: if $result is a Controller then BetterNavigator won't be rendered.
+        // See https://github.com/jonom/silverstripe-betternavigator/issues/47#issuecomment-682120739
+
+        // Check that we're dealing with HTML
+        $isHtmlResponse = $result instanceof DBHTMLText ||
+            $result instanceof HTTPResponse && strpos($result->getHeader('content-type'), 'text/html') !== false;
+
+        if (!$isHtmlResponse || !$this->shouldDisplay()) {
             return $result;
         }
 
-        if (!($result instanceof DBHTMLText)) {
-            return $result;
-        }
-
-        $html = $result->getValue();
+        $html = $result instanceof DBHTMLText ? $result->getValue() : $result->getBody();
         $navigatorHTML = $this->generateNavigator()->getValue();
 
         // Inject the NavigatorHTML before the closing </body> tag
@@ -63,7 +55,11 @@ class BetterNavigatorExtension extends DataExtension
             $navigatorHTML . '\\1',
             $html
         );
-        $result->setValue($html);
+        if ($result instanceof DBHTMLText) {
+            $result->setValue($html);
+        } else {
+            $result->setBody($html);
+        }
 
         return $result;
     }
@@ -107,11 +103,11 @@ class BetterNavigatorExtension extends DataExtension
         }
         // Only show edit link if user has permission to edit this page
         $editLink = array_key_exists('CMSLink', $nav)
-        && ($isDev || $this->owner->dataRecord->canEdit() && Permission::check('CMS_ACCESS_CMSMain'))
+            && ($isDev || $this->owner->dataRecord->canEdit() && Permission::check('CMS_ACCESS_CMSMain'))
             ? $nav['CMSLink']['Link'] : false;
 
         // Is the logged in member nominated as a developer?
-        $member = Member::currentUser();
+        $member = Security::getCurrentUser();
         $devs = Config::inst()->get('BetterNavigator', 'developers');
         $identifierField = Member::config()->unique_identifier_field;
         $isDeveloper = $member && is_array($devs) ? in_array($member->{$identifierField}, $devs) : false;
@@ -120,6 +116,7 @@ class BetterNavigatorExtension extends DataExtension
         $backURL = '?BackURL=' . urlencode($this->owner->Link());
         $logoutForm = LogoutForm::create($this->owner)->setName('BetterNavigatorLogoutForm');
         $logoutForm->Fields()->fieldByName('BackURL')->setValue($this->owner->Link());
+        $bnModule = ModuleLoader::getModule('jonom/silverstripe-betternavigator');
         $bNData = array_merge($nav, [
             'Member' => $member,
             'Stage' => Versioned::get_stage(),
@@ -129,7 +126,9 @@ class BetterNavigatorExtension extends DataExtension
             'LogoutForm' => $logoutForm,
             'EditLink' => $editLink,
             'Mode' => Director::get_environment_type(),
-            'IsDeveloper' => $isDeveloper
+            'IsDeveloper' => $isDeveloper,
+            'ScriptUrl' => $bnModule->getResource('javascript/betternavigator.js')->getURL(),
+            'CssUrl' => $bnModule->getResource('css/betternavigator.css')->getURL(),
         ]);
 
         // Merge with page data, send to template and render

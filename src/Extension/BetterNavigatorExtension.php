@@ -84,6 +84,7 @@ class BetterNavigatorExtension extends DataExtension
         // Get SilverStripeNavigator links & stage info (CMS/Stage/Live/Archive)
         $nav = [];
         $viewing = '';
+        $viewingTitle = '';
         $navigator = SilverStripeNavigator::create($this->owner->dataRecord);
         $isDev = Director::isDev();
 
@@ -96,9 +97,18 @@ class BetterNavigatorExtension extends DataExtension
                 'Active' => $active
             ];
             if ($active) {
-                if ($name == 'LiveLink') $viewing = 'Live';
-                if ($name == 'StageLink') $viewing = 'Draft';
-                if ($name == 'ArchiveLink') $viewing = 'Archived';
+                if ($name == 'LiveLink') {
+                    $viewing = 'Live';
+                    $viewingTitle = _t(self::class . '.VIEWING_LIVE', 'Live');
+                }
+                else if ($name == 'StageLink') {
+                    $viewing = 'Draft';
+                    $viewingTitle = _t(self::class . '.VIEWING_DRAFT', 'Draft');
+                }
+                else if ($name == 'ArchiveLink') {
+                    $viewing = 'Archived';
+                    $viewingTitle = _t(self::class . '.VIEWING_ARCHIVED', 'Archived');
+                }
             }
         }
         // Only show edit link if user has permission to edit this page
@@ -121,6 +131,7 @@ class BetterNavigatorExtension extends DataExtension
             'Member' => $member,
             'Stage' => Versioned::get_stage(),
             'Viewing' => $viewing, // What we're viewing doesn't necessarily align with the active Stage
+            'ViewingTitle' => $viewingTitle,
             'LoginLink' => Controller::join_links(Director::absoluteBaseURL(), Security::config()->login_url, $backURL),
             'LogoutLink' => Controller::join_links(Director::absoluteBaseURL() . Security::config()->logout_url, $backURL),
             'LogoutForm' => $logoutForm,

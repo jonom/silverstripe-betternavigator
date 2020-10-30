@@ -1,9 +1,9 @@
 de:
-  JonoM\BetterNavigator\Extension\BetterNavigatorExtension:
+  JonoM\BetterNavigator:
     VIEWING_LIVE: 'Live'
     VIEWING_DRAFT: 'Entwurf'
     VIEWING_ARCHIVED: 'Archiviert'
-  JonoM\BetterNavigator:
+
     DEVELOPER_TOOLS_HEADING: 'Entwickler Tools'
     DEBUGGING_HEADING: 'Debugging'
 

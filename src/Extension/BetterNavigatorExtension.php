@@ -99,15 +99,15 @@ class BetterNavigatorExtension extends DataExtension
             if ($active) {
                 if ($name == 'LiveLink') {
                     $viewing = 'Live';
-                    $viewingTitle = _t(self::class . '.VIEWING_LIVE', 'Live');
+                    $viewingTitle = _t('JonoM\BetterNavigator.VIEWING_LIVE', 'Live');
                 }
                 else if ($name == 'StageLink') {
                     $viewing = 'Draft';
-                    $viewingTitle = _t(self::class . '.VIEWING_DRAFT', 'Draft');
+                    $viewingTitle = _t('JonoM\BetterNavigator.VIEWING_DRAFT', 'Draft');
                 }
                 else if ($name == 'ArchiveLink') {
                     $viewing = 'Archived';
-                    $viewingTitle = _t(self::class . '.VIEWING_ARCHIVED', 'Archived');
+                    $viewingTitle = _t('JonoM\BetterNavigator.VIEWING_ARCHIVED', 'Archived');
                 }
             }
         }

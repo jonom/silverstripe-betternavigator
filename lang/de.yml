@@ -3,7 +3,7 @@ de:
     VIEWING_LIVE: 'Live'
     VIEWING_DRAFT: 'Entwurf'
     VIEWING_ARCHIVED: 'Archiviert'
-  BetterNavigator:
+  JonoM\BetterNavigator:
     DEVELOPER_TOOLS_HEADING: 'Entwickler Tools'
     DEBUGGING_HEADING: 'Debugging'
 

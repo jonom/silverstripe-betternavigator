@@ -1,6 +1,6 @@
 {
     "name": "jonom/silverstripe-betternavigator",
-    "description": "Front-end utility menu for SilverStripe websites featuring administration and development tools",
+    "description": "Front-end utility menu for Silverstripe websites featuring administration and development tools",
     "type": "silverstripe-vendormodule",
     "keywords": [
         "silverstripe",

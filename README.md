@@ -1,8 +1,8 @@
-# BetterNavigator for SilverStripe
+# BetterNavigator for Silverstripe
 
 ![Diagram of module](images/demo.png)
 
-This module is intended to replicate and expand upon the functionality provided by SilverStripe's built-in SilverStripeNavigator class. It provides a handy front-end menu for CMS users which offers these features:
+This module is intended to replicate and expand upon the functionality provided by Silverstripe's built-in SilverStripeNavigator class. It provides a handy front-end menu for CMS users which offers these features:
 
 **For Content Authors**
 
@@ -12,12 +12,12 @@ This module is intended to replicate and expand upon the functionality provided 
 
 **For Developers**
 
- * When in Dev Mode links are included for accessing most of SilverStripe's [URL Variable Tools](http://doc.silverstripe.org/framework/en/reference/urlvariabletools)
+ * When in Dev Mode links are included for accessing most of Silverstripe's [URL Variable Tools](http://doc.silverstripe.org/framework/en/reference/urlvariabletools)
  * Developers can access these tools on a live website by nominating themselves as a developer in the site config
 
 ## Requirements
 
-SilverStripe 4.0 (3.1+ through previous releases)
+Silverstripe 4.0 (3.1+ through previous releases)
 
 ## Installation
 
@@ -69,7 +69,7 @@ The BetterNavigator.ss template's scope is set to the page that is being viewed,
 
 ## Bonus: better debugging tools
 
-This module provide quick access to SilverStripe's built in [URL Variable Tools](http://doc.silverstripe.org/framework/en/reference/urlvariabletools) but reading their output isn't much fun. You can peek under SilverStripe's hood much more conveniently using lekoala's [SilverStripe DebugBar](https://github.com/lekoala/silverstripe-debugbar)
+This module provide quick access to Silverstripe's built in [URL Variable Tools](http://doc.silverstripe.org/framework/en/reference/urlvariabletools) but reading their output isn't much fun. You can peek under Silverstripe's hood much more conveniently using lekoala's [Silverstripe DebugBar](https://github.com/lekoala/silverstripe-debugbar)
 
 ## Maintainer contact
 

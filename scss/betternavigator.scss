@@ -33,8 +33,6 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
 
     &.collapsed {
         box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
-        @include transform-origin(right,top);
-        @include transform(rotate(90deg) translate(100%,0));
 
         &.translucent {
             opacity: 0.5;
@@ -64,6 +62,11 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
     &.right-top {
         right: 0;
         top: 0;
+
+        &.collapsed {
+            @include transform-origin(right, top);
+            @include transform(rotate(90deg) translate(100%, 0));
+        }
     }
 
     &.right-bottom {
@@ -71,7 +74,8 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
         bottom: 0;
 
         &.collapsed {
-            bottom: 4rem;
+            @include transform-origin(right, bottom);
+            @include transform(rotate(90deg) translate(0, 100%));
         }
     }
 
@@ -80,13 +84,19 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
         bottom: 0;
 
         &.collapsed {
-            bottom: 4rem;
+            @include transform-origin(left, bottom);
+            @include transform(rotate(90deg) translate(-100%, 0));
         }
     }
 
     &.left-top {
         left: 0;
         top: 0;
+
+        &.collapsed {
+            @include transform-origin(left, top);
+            @include transform(rotate(90deg) translate(0, -100%));
+        }
     }
 }
 

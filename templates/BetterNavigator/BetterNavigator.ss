@@ -1,47 +1,47 @@
-<div id="BetterNavigator" class="collapsed">
+<div id="BetterNavigator" class="better-navigator collapsed">
 
-        <div id="BetterNavigatorStatus" class="$Viewing">
-            <span class="bn-icon-cog"></span>
-            $ViewingTitle
-            <span class="bn-icon-close"></span>
-        </div>
+    <div id="BetterNavigatorStatus" class="better-navigator__status $Viewing">
+        <span class="bn-icon-cog"></span>
+        $ViewingTitle
+        <span class="bn-icon-close"></span>
+    </div>
 
-    <div id="BetterNavigatorContent">
+    <div id="BetterNavigatorContent" class="better-navigator__content">
 
         <div class="bn-links">
 
-                <% if $ArchiveLink.Active %>
-                    <% if $EditLink %><a href="$EditLink" target="_blank"><span class="bn-icon-edit"></span><%t JonoM\BetterNavigator.RESTORE_LABEL 'Restore' %></a><% end_if %>
-                <% else %>
-                    <% if not $LiveLink.Active %>
-                        <% if $LiveLink.Link %>
-                            <a href="$LiveLink.Link"><span class="bn-icon-view"></span><%t JonoM\BetterNavigator.VIEW_LIVE_LABEL 'View live' %></a>
-                        <% else %>
-                            <span class="bn-disabled"><span class="bn-icon-view"></span><%t JonoM\BetterNavigator.NOT_YET_PUBLISHED_LABEL 'Not yet published' %></span>
-                        <% end_if %>
+            <% if $ArchiveLink.Active %>
+                <% if $EditLink %><a href="$EditLink" target="_blank"><span class="bn-icon-edit"></span><%t JonoM\BetterNavigator.RESTORE_LABEL 'Restore' %></a><% end_if %>
+            <% else %>
+                <% if not $LiveLink.Active %>
+                    <% if $LiveLink.Link %>
+                        <a href="$LiveLink.Link"><span class="bn-icon-view"></span><%t JonoM\BetterNavigator.VIEW_LIVE_LABEL 'View live' %></a>
+                    <% else %>
+                        <span class="bn-disabled"><span class="bn-icon-view"></span><%t JonoM\BetterNavigator.NOT_YET_PUBLISHED_LABEL 'Not yet published' %></span>
                     <% end_if %>
-                    <% if not $StageLink.Active %>
-                        <% if $StageLink.Link %>
-                            <a href="$StageLink.Link"><span class="bn-icon-view"></span><%t JonoM\BetterNavigator.VIEW_DRAFT_LABEL 'View draft' %></a>
-                        <% else %>
-                            <span class="bn-disabled"><span class="bn-icon-view"></span><%t JonoM\BetterNavigator.DELETED_FROM_DRAFT_SITE_LABEL 'Deleted from draft site' %></span>
-                        <% end_if %>
-                    <% end_if %>
-                    <% if $EditLink %><a href="$EditLink" target="_blank"><span class="bn-icon-edit"></span><%t JonoM\BetterNavigator.EDIT_IN_CMS_LABEL 'Edit in CMS' %></a><% end_if %>
                 <% end_if %>
+                <% if not $StageLink.Active %>
+                    <% if $StageLink.Link %>
+                        <a href="$StageLink.Link"><span class="bn-icon-view"></span><%t JonoM\BetterNavigator.VIEW_DRAFT_LABEL 'View draft' %></a>
+                    <% else %>
+                        <span class="bn-disabled"><span class="bn-icon-view"></span><%t JonoM\BetterNavigator.DELETED_FROM_DRAFT_SITE_LABEL 'Deleted from draft site' %></span>
+                    <% end_if %>
+                <% end_if %>
+                <% if $EditLink %><a href="$EditLink" target="_blank"><span class="bn-icon-edit"></span><%t JonoM\BetterNavigator.EDIT_IN_CMS_LABEL 'Edit in CMS' %></a><% end_if %>
+            <% end_if %>
 
-                <% if $Member %>
-                    $LogoutForm
-                    <a href="$LogoutLink" id="BetterNavigatorLogoutLink"><span class="bn-icon-user"></span><%t JonoM\BetterNavigator.LOG_OUT_LABEL 'Log out' %><% if $Member.FirstName %><span class="light"> ($Member.FirstName)</span><% end_if %></a>
-                <% else %>
-                    <a href="$LoginLink"><span class="bn-icon-user"></span><%t JonoM\BetterNavigator.LOG_IN_LABEL 'Log in' %></a>
-                <% end_if %>
+            <% if $Member %>
+                $LogoutForm
+            <a href="$LogoutLink" id="BetterNavigatorLogoutLink" class="better-navigator__logout-link"><span class="bn-icon-user"></span><%t JonoM\BetterNavigator.LOG_OUT_LABEL 'Log out' %><% if $Member.FirstName %><span class="light"> ($Member.FirstName)</span><% end_if %></a>
+            <% else %>
+                <a href="$LoginLink"><span class="bn-icon-user"></span><%t JonoM\BetterNavigator.LOG_IN_LABEL 'Log in' %></a>
+            <% end_if %>
 
         </div>
 
         <% include BetterNavigator\BetterNavigatorExtraContent %>
 
-        <% if $Mode=='dev' || $IsDeveloper %>
+        <% if $Mode == 'dev' || $IsDeveloper %>
 
             <div class="bn-heading"><%t JonoM\BetterNavigator.DEVELOPER_TOOLS_HEADING 'Developer tools' %></div>
 
@@ -77,7 +77,7 @@
 
         <% end_if %>
 
-        <% if $Mode=='dev' %>
+        <% if $Mode == 'dev' %>
 
             <div class="bn-heading"><%t JonoM\BetterNavigator.DEBUGGING_HEADING 'Debugging' %></div>
 

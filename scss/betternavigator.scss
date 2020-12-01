@@ -11,7 +11,7 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
 
 //Container
 
-#BetterNavigator {
+.better-navigator {
     position: fixed;
     top: 0;
     right: 0;
@@ -39,7 +39,7 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
         @include transform(rotate(90deg) translate(100%,0));
         border-width: 0 1px 1px 0;
 
-        #BetterNavigatorStatus {
+        .better-navigator__status {
             border-width: 0 1px 1px 0;
 
             .bn-icon-close {
@@ -50,7 +50,7 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
             }
         }
 
-        #BetterNavigatorContent {
+        .better-navigator__content {
             display: none;
         }
     }
@@ -62,7 +62,7 @@ $liveColor: #39b54a;
 $stageColor: #f26c4f;
 $archiveColor: #6f6f6f;
 
-#BetterNavigatorStatus {
+.better-navigator__status {
     color: #fff;
     background: $archiveColor;
     border: 1px solid shade($archiveColor, 10);
@@ -96,7 +96,7 @@ $archiveColor: #6f6f6f;
         }
     }
 
-    &.Live {
+    &.live {
         background: $liveColor;
         border-color: shade($liveColor, 10);
 
@@ -105,7 +105,7 @@ $archiveColor: #6f6f6f;
         }
     }
 
-    &.Draft {
+    &.draft {
         background: $stageColor;
         border-color: shade($stageColor, 10);
 
@@ -117,7 +117,7 @@ $archiveColor: #6f6f6f;
 
 //Content
 
-#BetterNavigatorContent {
+.better-navigator__content {
     padding: 6px;
     color: #71767a;
     background: #cfd8de;
@@ -131,7 +131,8 @@ $archiveColor: #6f6f6f;
         margin: 8px 0 4px 0;
     }
 
-    span[class^='bn-icon'],span[class*=' bn-icon']{
+    span[class^='bn-icon'],
+    span[class*=' bn-icon'] {
       margin: -2px 5px -3px -2px;
     }
 

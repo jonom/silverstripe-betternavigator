@@ -130,7 +130,7 @@ class BetterNavigatorExtension extends DataExtension
         $bNData = array_merge($nav, [
             'Member' => $member,
             'Stage' => Versioned::get_stage(),
-            'Viewing' => $viewing, // What we're viewing doesn't necessarily align with the active Stage
+            'Viewing' => strtolower($viewing), // What we're viewing doesn't necessarily align with the active Stage
             'ViewingTitle' => $viewingTitle,
             'LoginLink' => Controller::join_links(Director::absoluteBaseURL(), Security::config()->login_url, $backURL),
             'LogoutLink' => Controller::join_links(Director::absoluteBaseURL() . Security::config()->logout_url, $backURL),

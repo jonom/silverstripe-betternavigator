@@ -47,10 +47,10 @@ span[class^='bn-icon'], span[class*=' bn-icon'] { display: inline-block; }
 .better-navigator__status .bn-icon-cog, .better-navigator__status .bn-icon-close { opacity: .7; }
 .better-navigator__status:hover { background: dimgray; }
 .better-navigator__status:hover .bn-icon-cog, .better-navigator__status:hover .bn-icon-close { opacity: 1; }
-.better-navigator__status.live { background: #39b54a; border-color: #33a343; }
-.better-navigator__status.live:hover { background: #36ac46; }
-.better-navigator__status.draft { background: #f26c4f; border-color: #da6147; }
-.better-navigator__status.draft:hover { background: #e6674b; }
+.live .better-navigator__status { background: #39b54a; border-color: #33a343; }
+.live .better-navigator__status:hover { background: #36ac46; }
+.draft .better-navigator__status { background: #f26c4f; border-color: #da6147; }
+.draft .better-navigator__status:hover { background: #e6674b; }
 
 .better-navigator__content { padding: 6px; color: #71767a; background: #cfd8de; border: 1px solid #bac2c8; border-width: 0 0 1px 1px; }
 .better-navigator__content .bn-heading { text-align: center; text-transform: uppercase; font-size: 11px; margin: 8px 0 4px 0; }

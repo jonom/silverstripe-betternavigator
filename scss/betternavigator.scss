@@ -130,7 +130,7 @@ $archiveColor: #6f6f6f;
         }
     }
 
-    &.live {
+    .live & {
         background: $liveColor;
         border-color: shade($liveColor, 10);
 
@@ -139,7 +139,7 @@ $archiveColor: #6f6f6f;
         }
     }
 
-    &.draft {
+    .draft & {
         background: $stageColor;
         border-color: shade($stageColor, 10);
 

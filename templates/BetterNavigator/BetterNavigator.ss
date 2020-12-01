@@ -1,6 +1,6 @@
-<div id="BetterNavigator" class="better-navigator collapsed">
+<div id="BetterNavigator" class="better-navigator collapsed $CssClass">
 
-    <div id="BetterNavigatorStatus" class="better-navigator__status $CssClasses">
+    <div id="BetterNavigatorStatus" class="better-navigator__status">
         <span class="bn-icon-cog"></span>
         $ViewingTitle
         <span class="bn-icon-close"></span>

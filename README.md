@@ -57,6 +57,20 @@ You can mark certain CMS users as developers in your site's config, so they can 
 
 ## Customisation
 
+BetterNavigator can be made translucent by adding the following config setting:
+
+```
+  BetterNavigator:
+    translucent: true
+```
+
+BetterNavigator position can be set to 'top-right', 'top-left', 'bottom-right' or 'bottom-left' by adding the following config setting:
+
+```
+  BetterNavigator:
+    position: 'bottom-right'
+```
+
 BetterNavigator's output is controlled by templates so it can be [easily overridden](http://doc.silverstripe.org/framework/en/topics/theme-development#overriding).
 
 Some empty `<% include %>` placeholders are included to let you easily add more content (new buttons for instance). Just create any of these templates in your theme or app directory and add your content:

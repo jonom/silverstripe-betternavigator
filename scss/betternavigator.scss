@@ -11,7 +11,7 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
 
 //Container
 
-.better-navigator {
+#BetterNavigator {
     position: fixed;
     z-index: 99999;
     max-height: 100%;
@@ -43,7 +43,7 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
             }
         }
 
-        .better-navigator__status {
+        #BetterNavigatorStatus {
             border-width: 1px;
 
             .bn-icon-close {
@@ -54,7 +54,7 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
             }
         }
 
-        .better-navigator__content {
+        #BetterNavigatorContent {
             display: none;
         }
     }
@@ -106,7 +106,7 @@ $liveColor: #39b54a;
 $stageColor: #f26c4f;
 $archiveColor: #6f6f6f;
 
-.better-navigator__status {
+#BetterNavigatorStatus {
     color: #fff;
     background: $archiveColor;
     border: 1px solid shade($archiveColor, 10);
@@ -140,7 +140,7 @@ $archiveColor: #6f6f6f;
         }
     }
 
-    .live & {
+    &.Live {
         background: $liveColor;
         border-color: shade($liveColor, 10);
 
@@ -149,7 +149,7 @@ $archiveColor: #6f6f6f;
         }
     }
 
-    .draft & {
+    &.Draft {
         background: $stageColor;
         border-color: shade($stageColor, 10);
 
@@ -161,7 +161,7 @@ $archiveColor: #6f6f6f;
 
 //Content
 
-.better-navigator__content {
+#BetterNavigatorContent {
     padding: 6px;
     color: #71767a;
     background: #cfd8de;

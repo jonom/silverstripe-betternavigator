@@ -130,7 +130,8 @@ class BetterNavigatorExtension extends DataExtension
         $bNData = array_merge($nav, [
             'Member' => $member,
             'Stage' => Versioned::get_stage(),
-            'CssClass' => $this->cssClass($viewing),
+            'Viewing' => $viewing, // What we're viewing doesn't necessarily align with the active Stage
+            'CssClass' => $this->cssClass(),
             'ViewingTitle' => $viewingTitle,
             'LoginLink' => Controller::join_links(Director::absoluteBaseURL(), Security::config()->login_url, $backURL),
             'LogoutLink' => Controller::join_links(Director::absoluteBaseURL() . Security::config()->logout_url, $backURL),
@@ -183,12 +184,10 @@ class BetterNavigatorExtension extends DataExtension
 
 
     /**
-     * @param string $viewing
-     *
      * @return string
      */
-    private function cssClass($viewing) {
-        $classes = strtolower($viewing);
+    private function cssClass() {
+        $classes = '';
 
         $position = Config::inst()->get('BetterNavigator', 'position');
         $translucent = Config::inst()->get('BetterNavigator', 'translucent');

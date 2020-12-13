@@ -1,9 +1,9 @@
 // For reading cookies
 function getCookie(cname) {
-    let name = cname + "=";
-    let ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
         while (c.charAt(0) === ' ') {
             c = c.substring(1);
         }
@@ -16,35 +16,35 @@ function getCookie(cname) {
 
 function initialiseBetterNavigator() {
     // Dom elements
-    const betterNavigator = document.getElementById("BetterNavigator");
-    const betterNavigatorStatus = document.getElementById("BetterNavigatorStatus");
-    const betterNavigatorLogoutLink = document.getElementById("BetterNavigatorLogoutLink");
-    const betterNavigatorLogoutForm = document.getElementById("LogoutForm_BetterNavigatorLogoutForm");
+    var BetterNavigator = document.getElementById("BetterNavigator");
+    var BetterNavigatorStatus = document.getElementById("BetterNavigatorStatus");
+    var BetterNavigatorLogoutLink = document.getElementById("BetterNavigatorLogoutLink");
+    var BetterNavigatorLogoutForm = document.getElementById("LogoutForm_BetterNavigatorLogoutForm");
 
     // Toggle visibility of menu by clicking status
-    betterNavigatorStatus.onclick = function () {
-        if (betterNavigator.classList.contains('collapsed')) {
-            betterNavigator.classList.add('open');
-            betterNavigator.classList.remove('collapsed');
+    BetterNavigatorStatus.onclick = function () {
+        if (BetterNavigator.classList.contains('collapsed')) {
+            BetterNavigator.classList.add('open');
+            BetterNavigator.classList.remove('collapsed');
             document.cookie = "BetterNavigator=open;path=/";
         } else {
-            betterNavigator.classList.add('collapsed');
-            betterNavigator.classList.remove('open');
+            BetterNavigator.classList.add('collapsed');
+            BetterNavigator.classList.remove('open');
             document.cookie = "BetterNavigator=collapsed;path=/";
         }
     };
 
     // Restore menu state
     if (getCookie('BetterNavigator') === 'open') {
-        betterNavigator.classList.add('open');
-        betterNavigator.classList.remove('collapsed');
+        BetterNavigator.classList.add('open');
+        BetterNavigator.classList.remove('collapsed');
     }
 
-    if (betterNavigatorLogoutForm) {
+    if (BetterNavigatorLogoutForm) {
         // Upgrade logout link to directly log users out instead of redirecting to logout form
-        betterNavigatorLogoutLink.onclick = function (e) {
+        BetterNavigatorLogoutLink.onclick = function (e) {
             e.preventDefault();
-            betterNavigatorLogoutForm.submit();
+            BetterNavigatorLogoutForm.submit();
         };
     }
 }

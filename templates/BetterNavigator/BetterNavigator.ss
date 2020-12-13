@@ -1,12 +1,12 @@
-<div id="BetterNavigator" class="better-navigator collapsed $CssClass">
+<div id="BetterNavigator" class="collapsed $CssClass">
 
-    <div id="BetterNavigatorStatus" class="better-navigator__status">
+    <div id="BetterNavigatorStatus" class="$Viewing">
         <span class="bn-icon-cog"></span>
         $ViewingTitle
         <span class="bn-icon-close"></span>
     </div>
 
-    <div id="BetterNavigatorContent" class="better-navigator__content">
+    <div id="BetterNavigatorContent">
 
         <div class="bn-links">
 
@@ -32,7 +32,7 @@
 
             <% if $Member %>
                 $LogoutForm
-            <a href="$LogoutLink" id="BetterNavigatorLogoutLink" class="better-navigator__logout-link"><span class="bn-icon-user"></span><%t JonoM\BetterNavigator.LOG_OUT_LABEL 'Log out' %><% if $Member.FirstName %><span class="light"> ($Member.FirstName)</span><% end_if %></a>
+            <a href="$LogoutLink" id="BetterNavigatorLogoutLink"><span class="bn-icon-user"></span><%t JonoM\BetterNavigator.LOG_OUT_LABEL 'Log out' %><% if $Member.FirstName %><span class="light"> ($Member.FirstName)</span><% end_if %></a>
             <% else %>
                 <a href="$LoginLink"><span class="bn-icon-user"></span><%t JonoM\BetterNavigator.LOG_IN_LABEL 'Log in' %></a>
             <% end_if %>

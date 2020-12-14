@@ -57,7 +57,7 @@ You can mark certain CMS users as developers in your site's config, so they can 
 
 ## Customisation
 
-BetterNavigator can be made translucent by adding the following config setting:
+BetterNavigator can be made translucent when collapsed by adding the following config setting:
 
 ```
   BetterNavigator:

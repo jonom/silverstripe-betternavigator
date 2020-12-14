@@ -131,7 +131,7 @@ class BetterNavigatorExtension extends DataExtension
             'Member' => $member,
             'Stage' => Versioned::get_stage(),
             'Viewing' => $viewing, // What we're viewing doesn't necessarily align with the active Stage
-            'CssClass' => $this->cssClass(),
+            'CssClass' => $this->BetterNavigatorCssClass(),
             'ViewingTitle' => $viewingTitle,
             'LoginLink' => Controller::join_links(Director::absoluteBaseURL(), Security::config()->login_url, $backURL),
             'LogoutLink' => Controller::join_links(Director::absoluteBaseURL() . Security::config()->logout_url, $backURL),
@@ -186,7 +186,7 @@ class BetterNavigatorExtension extends DataExtension
     /**
      * @return string
      */
-    private function cssClass() {
+    private function BetterNavigatorCssClass() {
         $classes = '';
 
         $position = Config::inst()->get('BetterNavigator', 'position');

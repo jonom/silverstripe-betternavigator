@@ -49,13 +49,27 @@ public function showBetterNavigator()
 You can mark certain CMS users as developers in your site's config, so they can access developer tools when logged in. Example YAML:
 
 ```
-  BetterNavigator:
-    developers:
-      - 'dev@yoursite.com'
-      - 'otherdev@yoursite.com'
+BetterNavigator:
+developers:
+    - 'dev@yoursite.com'
+    - 'otherdev@yoursite.com'
 ```
 
 ## Customisation
+
+BetterNavigator can be made translucent when collapsed by adding the following config setting:
+
+```
+BetterNavigator:
+translucent: true
+```
+
+BetterNavigator's default position is 'right-top', but can be changed to 'right-bottom', 'left-top' or 'left-bottom'. Example:
+
+```
+BetterNavigator:
+position: 'right-bottom'
+```
 
 BetterNavigator's output is controlled by templates so it can be [easily overridden](http://doc.silverstripe.org/framework/en/topics/theme-development#overriding).
 

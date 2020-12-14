@@ -24,16 +24,26 @@
 
 span[class^='bn-icon'], span[class*=' bn-icon'] { display: inline-block; }
 
-#BetterNavigator { position: fixed; top: 0; right: 0; z-index: 99999; max-height: 100%; overflow: auto; font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height: 16px; text-align: left; }
+#BetterNavigator { position: fixed; z-index: 99999; max-height: 100%; overflow: auto; font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height: 16px; text-align: left; }
 #BetterNavigator a { text-decoration: none; }
 #BetterNavigator form { display: none; }
-#BetterNavigator.collapsed { box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); -moz-transform-origin: right top; -ms-transform-origin: right top; -webkit-transform-origin: right top; transform-origin: right top; -moz-transform: rotate(90deg) translate(100%, 0); -ms-transform: rotate(90deg) translate(100%, 0); -webkit-transform: rotate(90deg) translate(100%, 0); transform: rotate(90deg) translate(100%, 0); border-width: 0 1px 1px 0; }
-#BetterNavigator.collapsed #BetterNavigatorStatus { border-width: 0 1px 1px 0; }
+#BetterNavigator.collapsed { box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); }
+#BetterNavigator.collapsed.translucent { opacity: 0.5; transition: opacity 250ms; }
+#BetterNavigator.collapsed.translucent:hover { opacity: 1; }
+#BetterNavigator.collapsed #BetterNavigatorStatus { border-width: 1px; }
 #BetterNavigator.collapsed #BetterNavigatorStatus .bn-icon-close { display: none; }
 #BetterNavigator.collapsed #BetterNavigatorStatus .bn-icon-cog { display: inline-block; }
 #BetterNavigator.collapsed #BetterNavigatorContent { display: none; }
+#BetterNavigator.right-top { right: 0; top: 0; }
+#BetterNavigator.right-top.collapsed { -moz-transform-origin: right top; -ms-transform-origin: right top; -webkit-transform-origin: right top; transform-origin: right top; -moz-transform: rotate(90deg) translate(100%, 0); -ms-transform: rotate(90deg) translate(100%, 0); -webkit-transform: rotate(90deg) translate(100%, 0); transform: rotate(90deg) translate(100%, 0); }
+#BetterNavigator.right-bottom { right: 0; bottom: 0; }
+#BetterNavigator.right-bottom.collapsed { -moz-transform-origin: right bottom; -ms-transform-origin: right bottom; -webkit-transform-origin: right bottom; transform-origin: right bottom; -moz-transform: rotate(90deg) translate(0, 100%); -ms-transform: rotate(90deg) translate(0, 100%); -webkit-transform: rotate(90deg) translate(0, 100%); transform: rotate(90deg) translate(0, 100%); }
+#BetterNavigator.left-bottom { left: 0; bottom: 0; }
+#BetterNavigator.left-bottom.collapsed { -moz-transform-origin: left bottom; -ms-transform-origin: left bottom; -webkit-transform-origin: left bottom; transform-origin: left bottom; -moz-transform: rotate(90deg) translate(-100%, 0); -ms-transform: rotate(90deg) translate(-100%, 0); -webkit-transform: rotate(90deg) translate(-100%, 0); transform: rotate(90deg) translate(-100%, 0); }
+#BetterNavigator.left-top { left: 0; top: 0; }
+#BetterNavigator.left-top.collapsed { -moz-transform-origin: left top; -ms-transform-origin: left top; -webkit-transform-origin: left top; transform-origin: left top; -moz-transform: rotate(90deg) translate(0, -100%); -ms-transform: rotate(90deg) translate(0, -100%); -webkit-transform: rotate(90deg) translate(0, -100%); transform: rotate(90deg) translate(0, -100%); }
 
-#BetterNavigatorStatus { color: #fff; background: #6f6f6f; border: 1px solid #646464; border-width: 0 0 0 1px; text-transform: uppercase; cursor: pointer; padding: 10px 15px 8px; font-weight: bold; }
+#BetterNavigatorStatus { color: #fff; background: #6f6f6f; border: 1px solid #646464; border-width: 0; text-transform: uppercase; cursor: pointer; padding: 10px 15px 8px; font-weight: bold; }
 #BetterNavigatorStatus .bn-icon-cog { margin: -4px 8px -4px -4px; display: none; }
 #BetterNavigatorStatus .bn-icon-close { float: right; margin: 1px 0 0 0; }
 #BetterNavigatorStatus .bn-icon-cog, #BetterNavigatorStatus .bn-icon-close { opacity: .7; }

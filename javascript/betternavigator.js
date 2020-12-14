@@ -2,9 +2,9 @@
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
-    for(var i=0; i<ca.length; i++) {
+    for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
-        while (c.charAt(0)===' ') {
+        while (c.charAt(0) === ' ') {
             c = c.substring(1);
         }
         if (c.indexOf(name) !== -1) {
@@ -23,14 +23,21 @@ function initialiseBetterNavigator() {
 
     // Toggle visibility of menu by clicking status
     BetterNavigatorStatus.onclick = function () {
-        BetterNavigator.className = BetterNavigator.className === 'collapsed' ? 'open' : 'collapsed';
-        //Set cookie to remember state
-        document.cookie = "BetterNavigator=" + BetterNavigator.className + ";path=/";
+        if (BetterNavigator.classList.contains('collapsed')) {
+            BetterNavigator.classList.add('open');
+            BetterNavigator.classList.remove('collapsed');
+            document.cookie = "BetterNavigator=open;path=/";
+        } else {
+            BetterNavigator.classList.add('collapsed');
+            BetterNavigator.classList.remove('open');
+            document.cookie = "BetterNavigator=collapsed;path=/";
+        }
     };
 
     // Restore menu state
     if (getCookie('BetterNavigator') === 'open') {
-        BetterNavigator.className = 'open';
+        BetterNavigator.classList.add('open');
+        BetterNavigator.classList.remove('collapsed');
     }
 
     if (BetterNavigatorLogoutForm) {

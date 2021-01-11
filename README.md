@@ -50,9 +50,9 @@ You can mark certain CMS users as developers in your site's config, so they can 
 
 ```
 BetterNavigator:
-developers:
-  - 'dev@yoursite.com'
-  - 'otherdev@yoursite.com'
+  developers:
+    - 'dev@yoursite.com'
+    - 'otherdev@yoursite.com'
 ```
 
 ## Customisation

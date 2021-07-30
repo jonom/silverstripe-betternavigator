@@ -58,9 +58,10 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
 
 //Status
 
-$liveColor: #39b54a;
-$stageColor: #f26c4f;
+$liveColor: #178025;
+$stageColor: #c54a30;
 $archiveColor: #6f6f6f;
+$fontColor: #292d31;
 
 #BetterNavigatorStatus {
     color: #fff;
@@ -119,7 +120,7 @@ $archiveColor: #6f6f6f;
 
 #BetterNavigatorContent {
     padding: 6px;
-    color: #71767a;
+    color: $fontColor;
     background: #cfd8de;
     border: 1px solid shade(#cfd8de, 10);
     border-width: 0 0 1px 1px;
@@ -163,7 +164,7 @@ $archiveColor: #6f6f6f;
 
     span.bn-disabled {
         background: #afbac0;
-        color: #51565a;
+        color: $fontColor;
         cursor: default;
     }
 }

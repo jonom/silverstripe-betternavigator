@@ -111,10 +111,19 @@ class BetterNavigatorExtension extends DataExtension
                 }
             }
         }
-        // Only show edit link if user has permission to edit this page
-        $editLink = array_key_exists('CMSLink', $nav)
-            && ($isDev || $this->owner->dataRecord->canEdit() && Permission::check('CMS_ACCESS_CMSMain'))
-            ? $nav['CMSLink']['Link'] : false;
+        
+        // Only show edit link if user has CMS access
+        if($isDev || Permission::check('CMS_ACCESS_CMSMain')) {
+            // Check for edit link override, e.g. for a DataObject
+            if(method_exists($this->owner, 'CustomBetterNavigatorEditLink')) {
+                $editLink = $this->owner->CustomBetterNavigatorEditLink();
+            } else {
+                // Only show edit link if user has permission to edit this page
+                $editLink = array_key_exists('CMSLink', $nav)
+                && ($this->owner->dataRecord->canEdit())
+                ? $nav['CMSLink']['Link'] : false;
+            }
+        }
 
         // Is the logged in member nominated as a developer?
         $member = Member::currentUser();

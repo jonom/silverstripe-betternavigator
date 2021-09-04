@@ -81,6 +81,25 @@ Some empty `<% include %>` placeholders are included to let you easily add more 
 
 The BetterNavigator.ss template's scope is set to the page that is being viewed, so any methods available in your page controller will be available in the BetterNavigator.ss template. This should allow you to add custom links by page type and introduce complex logic if you want to.
 
+## Overriding the "Edit in CMS" Link
+
+There may be occasions when you wish to override the "Edit in CMS" link. For example to point to the edit form for a displayed DataObject, rather than for the Page itself. To do so, simply add a `BetterNavigatorEditLink()` method to your page's Controller, e.g.:
+
+````php
+// EventsPageController.php
+
+/**
+ * Return an alternative URL for the BetterNavigator Edit in CMS link.
+ * @return string
+ */
+public function BetterNavigatorEditLink()
+{
+    return CMSEditLinkAPI::find_edit_link_for_object($this->displayedEvent());
+}
+````
+
+(This example uses [sunnysideup/cms_edit_link_field](https://github.com/sunnysideup/silverstripe-cms_edit_link_field) to automatically find an edit link for a specified DataObject, but you can return any URL.)
+
 ## Bonus: better debugging tools
 
 This module provide quick access to Silverstripe's built in [URL Variable Tools](http://doc.silverstripe.org/framework/en/reference/urlvariabletools) but reading their output isn't much fun. You can peek under Silverstripe's hood much more conveniently using lekoala's [Silverstripe DebugBar](https://github.com/lekoala/silverstripe-debugbar)

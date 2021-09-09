@@ -94,7 +94,8 @@ There may be occasions when you wish to override the "Edit in CMS" link. For exa
  */
 public function BetterNavigatorEditLink()
 {
-    return CMSEditLinkAPI::find_edit_link_for_object($this->displayedEvent());
+    $event = $this->displayedEvent();
+    return $event->canEdit() ? CMSEditLinkAPI::find_edit_link_for_object($event) : false;
 }
 ````
 

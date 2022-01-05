@@ -101,6 +101,34 @@ public function BetterNavigatorEditLink()
 
 (This example uses [sunnysideup/cms_edit_link_field](https://github.com/sunnysideup/silverstripe-cms_edit_link_field) to automatically find an edit link for a specified DataObject, but you can return any URL.)
 
+## Overriding whether better navigator should be shown or not
+
+There may be occasions when you wish to override whether better navigator should be shown at all, for example on custom data objects. To do so simply add a `BetterNavigatorShouldDisplay()` method to your Controller, e.g.:
+```php
+// EventController.php
+
+/**
+ * Detect whether better navigator should be displayed or not
+ * @return bool
+ */
+public function BetterNavigatorShouldDisplay()
+{
+    return $this->dataRecord
+        && $this->dataRecord instanceof Event
+        && $this->dataRecord->ID > 0
+        && (Director::isDev() || Permission::check('CMS_ACCESS_' . EventAdmin::class));
+}
+```
+
+## Overriding the permissions required for the cms edit link
+
+By default users are required to have at least the `CMS_ACCESS_CMSMain` permission in order to see the edit link in better navigator, you can override this by setting the `better_navigator_edit_permission` configuration option on your controller to another permission code or an array of permission codes, e.g.:
+
+```yml
+My\Namespace\EventController:
+  better_navigator_edit_permission: "CUSTOM_PERMISSION_CODE"
+  better_navigator_edit_permission_mode: "any" #Optional, but can be either "any" or "all" (defaults to "all")
+
 ## Bonus: better debugging tools
 
 This module provide quick access to Silverstripe's built in [URL Variable Tools](http://doc.silverstripe.org/framework/en/reference/urlvariabletools) but reading their output isn't much fun. You can peek under Silverstripe's hood much more conveniently using lekoala's [Silverstripe DebugBar](https://github.com/lekoala/silverstripe-debugbar)

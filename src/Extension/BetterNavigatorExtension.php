@@ -17,15 +17,11 @@ use SilverStripe\Security\Security;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\ArrayData;
 use SilverStripe\ORM\FieldType\DBHTMLText;
-use SilverStripe\View\Requirements;
 
 class BetterNavigatorExtension extends DataExtension
 {
-
-    /**
-     * @var bool|null
-     */
-    private $shouldDisplay = null;
+    private static $better_navigator_edit_permission = 'CMS_ACCESS_CMSMain';
+    private static $better_navigator_edit_permission_mode = 'any';
 
     /**
      * @param $request
@@ -111,10 +107,10 @@ class BetterNavigatorExtension extends DataExtension
                 }
             }
         }
-        
+
         // Only show edit link if user has CMS access
         $editLink = null;
-        if($isDev || Permission::check('CMS_ACCESS_CMSMain')) {
+        if($isDev || Permission::check($this->owner->config()->better_navigator_edit_permission, $this->owner->config()->better_navigator_edit_permission_mode)) {
             // Check for edit link override, e.g. for a DataObject
             if(method_exists($this->owner, 'BetterNavigatorEditLink')) {
                 $editLink = $this->owner->BetterNavigatorEditLink();
@@ -127,7 +123,7 @@ class BetterNavigatorExtension extends DataExtension
         }
 
         // Is the logged in member nominated as a developer?
-        $member = Member::currentUser();
+        $member = Security::getCurrentUser();
         $devs = Config::inst()->get('BetterNavigator', 'developers');
         $identifierField = Member::config()->unique_identifier_field;
         $isDeveloper = $member && is_array($devs) ? in_array($member->{$identifierField}, $devs) : false;
@@ -165,20 +161,29 @@ class BetterNavigatorExtension extends DataExtension
      */
     private function shouldDisplay()
     {
-        if ($this->shouldDisplay !== null) {
-            return $this->shouldDisplay;
+        if ($this->owner->getField('_betterNavigatorShouldDisplay') !== null) {
+            return $this->owner->getField('_betterNavigatorShouldDisplay');
+        }
+
+        if ($this->owner->hasMethod('BetterNavigatorShouldDisplay')) {
+            $result = $this->owner->BetterNavigatorShouldDisplay();
+            $this->owner->setField('_betterNavigatorShouldDisplay', $result);
+            return $result;
         }
 
         // Make sure this is a page
         if (!$this->isAPage() || !$this->owner->showBetterNavigator()) {
-            return $this->shouldDisplay = false;
+            $this->owner->setField('_betterNavigatorShouldDisplay', false);
+            return false;
         }
 
         // Only show navigator to appropriate users
         $isDev = Director::isDev();
         $canViewDraft = (Permission::check('VIEW_DRAFT_CONTENT') || Permission::check('CMS_ACCESS_CMSMain'));
 
-        return $this->shouldDisplay = ($isDev || $canViewDraft);
+        $result = ($isDev || $canViewDraft);
+        $this->owner->setField('_betterNavigatorShouldDisplay', $result);
+        return $result;
     }
 
     /**

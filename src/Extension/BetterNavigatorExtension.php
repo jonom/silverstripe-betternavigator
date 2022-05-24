@@ -123,6 +123,8 @@ class BetterNavigatorExtension extends DataExtension
                 && ($isDev || $this->owner->dataRecord->canEdit())
                 ? $nav['CMSLink']['Link'] : false;
             }
+        }else{
+            $editLink = false;
         }
 
         // Is the logged in member nominated as a developer?

@@ -66,7 +66,7 @@ class BetterNavigatorExtension extends DataExtension
      */
     public function showBetterNavigator()
     {
-        return true;
+        return $this->isAPage();
     }
 
     /**
@@ -165,14 +165,8 @@ class BetterNavigatorExtension extends DataExtension
             return $this->owner->getField('_betterNavigatorShouldDisplay');
         }
 
-        if ($this->owner->hasMethod('BetterNavigatorShouldDisplay')) {
-            $result = $this->owner->BetterNavigatorShouldDisplay();
-            $this->owner->setField('_betterNavigatorShouldDisplay', $result);
-            return $result;
-        }
-
         // Make sure this is a page
-        if (!$this->isAPage() || !$this->owner->showBetterNavigator()) {
+        if (!$this->owner->showBetterNavigator()) {
             $this->owner->setField('_betterNavigatorShouldDisplay', false);
             return false;
         }

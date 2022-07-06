@@ -33,10 +33,10 @@ The navigator is auto-injected into your template, and no code changes are neede
 
 If your website uses caching, make sure BetterNavigator's output is excluded.
 
-## Disabling the navigator
+## Custom navigator display logic
 
-You can disable the navigator using your own custom logic by defining a `showBetterNavigator(): bool`
-method in any controller with the extension applied.
+You can customise the navigator display logic using your own custom logic by defining a `showBetterNavigator(): bool`
+method in any controller with the extension applied. By default the navigator will only show on controllers that have a `dataRecord` property that is an instance of `SilverStripe\CMS\Model\SiteTree`.
 
 ```php
 public function showBetterNavigator()
@@ -100,25 +100,6 @@ public function BetterNavigatorEditLink()
 ````
 
 (This example uses [sunnysideup/cms_edit_link_field](https://github.com/sunnysideup/silverstripe-cms_edit_link_field) to automatically find an edit link for a specified DataObject, but you can return any URL.)
-
-## Overriding whether better navigator should be shown or not
-
-There may be occasions when you wish to override whether better navigator should be shown at all, for example on custom data objects. To do so simply add a `BetterNavigatorShouldDisplay()` method to your Controller, e.g.:
-```php
-// EventController.php
-
-/**
- * Detect whether better navigator should be displayed or not
- * @return bool
- */
-public function BetterNavigatorShouldDisplay()
-{
-    return $this->dataRecord
-        && $this->dataRecord instanceof Event
-        && $this->dataRecord->ID > 0
-        && (Director::isDev() || Permission::check('CMS_ACCESS_' . EventAdmin::class));
-}
-```
 
 ## Overriding the permissions required for the cms edit link
 

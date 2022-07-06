@@ -113,6 +113,7 @@ class BetterNavigatorExtension extends DataExtension
         }
         
         // Only show edit link if user has CMS access
+        $editLink = null;
         if($isDev || Permission::check('CMS_ACCESS_CMSMain')) {
             // Check for edit link override, e.g. for a DataObject
             if(method_exists($this->owner, 'BetterNavigatorEditLink')) {
@@ -123,8 +124,6 @@ class BetterNavigatorExtension extends DataExtension
                 && ($isDev || $this->owner->dataRecord->canEdit())
                 ? $nav['CMSLink']['Link'] : false;
             }
-        }else{
-            $editLink = false;
         }
 
         // Is the logged in member nominated as a developer?

@@ -49,7 +49,7 @@ class BetterNavigatorExtension extends DataExtension
         $html = preg_replace(
             '/(<\/body[^>]*>)/i',
             $navigatorHTML . '\\1',
-            $html
+            $html ?? ''
         );
         if ($result instanceof DBHTMLText) {
             $result->setValue($html);

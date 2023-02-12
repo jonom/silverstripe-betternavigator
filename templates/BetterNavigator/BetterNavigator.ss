@@ -62,14 +62,14 @@
                     <span class="bn-icon-flush"></span>
                     <%t JonoM\BetterNavigator.FLUSH_CACHE_LABEL 'Flush caches' %>
                 </a>
-                <a href="{$AbsoluteBaseURL}dev/build/?flush=1"
+                <a href="/dev/build/?flush=1"
                    target="_blank"
                    title="<%t JonoM\BetterNavigator.BUILD_DATABASE_TITLE 'Build database and flush caches (excludes template caches pre SS-3.1.7)' %>"
                 >
                     <span class="bn-icon-db"></span>
                     <%t JonoM\BetterNavigator.BUILD_DATABASE_LABEL 'Build database' %>
                 </a>
-                <a href="{$AbsoluteBaseURL}dev/" target="_blank"><span class="bn-icon-tools"></span><%t JonoM\BetterNavigator.DEV_MENU_LABEL 'Dev menu' %></a>
+                <a href="/dev/" target="_blank"><span class="bn-icon-tools"></span><%t JonoM\BetterNavigator.DEV_MENU_LABEL 'Dev menu' %></a>
 
             </div>
 

@@ -2,7 +2,7 @@
 
 namespace JonoM\BetterNavigator\Extension;
 
-use SilverStripe\CMS\Controllers\SilverStripeNavigator;
+use SilverStripe\Admin\Navigator\SilverStripeNavigator;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
@@ -22,6 +22,11 @@ class BetterNavigatorExtension extends DataExtension
 {
     private static $better_navigator_edit_permission = 'CMS_ACCESS_CMSMain';
     private static $better_navigator_edit_permission_mode = 'any';
+
+    /**
+     * Extensions are singleton, so any cached results need to use a unique key
+     */
+    private $shouldDisplay = [];
 
     /**
      * @param $request
@@ -161,13 +166,16 @@ class BetterNavigatorExtension extends DataExtension
      */
     private function shouldDisplay()
     {
-        if ($this->owner->getField('_betterNavigatorShouldDisplay') !== null) {
-            return $this->owner->getField('_betterNavigatorShouldDisplay');
+        $key = $this->owner->getUniqueKey();
+
+        if (array_key_exists($key, $this->shouldDisplay)) {
+            return $this->shouldDisplay[$key];
         }
 
         // Make sure this is a page
         if (!$this->owner->showBetterNavigator()) {
-            $this->owner->setField('_betterNavigatorShouldDisplay', false);
+            $this->shouldDisplay[$key] = false;
+
             return false;
         }
 
@@ -176,7 +184,8 @@ class BetterNavigatorExtension extends DataExtension
         $canViewDraft = (Permission::check('VIEW_DRAFT_CONTENT') || Permission::check('CMS_ACCESS_CMSMain'));
 
         $result = ($isDev || $canViewDraft);
-        $this->owner->setField('_betterNavigatorShouldDisplay', $result);
+        $this->shouldDisplay[$key] = $result;
+
         return $result;
     }
 

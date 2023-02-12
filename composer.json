@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "silverstripe/framework": "^4.0"
+        "silverstripe/framework": "^5"
     },
     "extra": {
         "installer-name": "betternavigator",

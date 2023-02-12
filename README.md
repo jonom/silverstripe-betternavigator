@@ -17,12 +17,16 @@ This module is intended to replicate and expand upon the functionality provided 
 
 ## Requirements
 
-Silverstripe 4.0 (3.1+ through previous releases)
+Silverstripe 5.0 (4.0+ and 3.1+ through previous releases)
 
 ## Installation
 
 **Composer / Packagist ([best practice](http://doc.silverstripe.org/framework/en/trunk/installation/composer))**
 Add "jonom/silverstripe-betternavigator" to your requirements.
+
+```
+composer require jonom/silverstripe-betternavigator
+```
 
 **Manually**
 Download, place the folder in your project root, rename it to 'betternavigator' (if applicable) and run a dev/build?flush=1.

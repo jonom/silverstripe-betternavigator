@@ -157,7 +157,7 @@ class BetterNavigatorExtension extends DataExtension
         // Merge with page data, send to template and render
         $navigator = new ArrayData($bNData);
 
-        return $this->owner->customise($navigator)->renderWith('BetterNavigator\\BetterNavigator');
+        return $this->owner->customise($navigator)->renderWith('JonoM\\BetterNavigator\\BetterNavigator');
     }
 
     /**

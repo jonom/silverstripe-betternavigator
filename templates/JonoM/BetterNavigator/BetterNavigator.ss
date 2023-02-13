@@ -39,7 +39,7 @@
 
         </div>
 
-        <% include BetterNavigator\BetterNavigatorExtraContent %>
+        <% include JonoM\BetterNavigator\BetterNavigatorExtraContent %>
 
         <% if $Mode == 'dev' || $IsDeveloper %>
 
@@ -73,7 +73,7 @@
 
             </div>
 
-            <% include BetterNavigator\BetterNavigatorExtraDevTools %>
+            <% include JonoM\BetterNavigator\BetterNavigatorExtraDevTools %>
 
         <% end_if %>
 
@@ -128,7 +128,7 @@
 
             </div>
 
-            <% include BetterNavigator\BetterNavigatorExtraDebugging %>
+            <% include JonoM\BetterNavigator\BetterNavigatorExtraDebugging %>
 
         <% end_if %>
 

@@ -7,6 +7,7 @@
     </div>
 
     <div id="BetterNavigatorContent">
+        <div class="bn-heading"><%t JonoM\BetterNavigator.ENVIRONMENT 'Environment:' %> $Mode</div>
 
         <div class="bn-links">
 

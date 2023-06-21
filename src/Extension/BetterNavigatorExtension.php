@@ -129,7 +129,7 @@ class BetterNavigatorExtension extends DataExtension
 
         // Is the logged in member nominated as a developer?
         $member = Security::getCurrentUser();
-        $devs = Config::inst()->get('BetterNavigator', 'developers');
+        $devs = Config::inst()->get('JonoM\BetterNavigator', 'developers');
         $identifierField = Member::config()->unique_identifier_field;
         $isDeveloper = $member && is_array($devs) ? in_array($member->{$identifierField}, $devs) : false;
 
@@ -207,8 +207,8 @@ class BetterNavigatorExtension extends DataExtension
     private function BetterNavigatorCssClass() {
         $classes = '';
 
-        $position = Config::inst()->get('BetterNavigator', 'position');
-        $translucent = Config::inst()->get('BetterNavigator', 'translucent');
+        $position = Config::inst()->get('JonoM\BetterNavigator', 'position');
+        $translucent = Config::inst()->get('JonoM\BetterNavigator', 'translucent');
 
         if ($position === 'left-top' || $position === 'left-bottom' || $position === 'right-bottom') {
             $classes .= ' ' . $position;

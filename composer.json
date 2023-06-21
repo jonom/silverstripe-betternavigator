@@ -19,7 +19,6 @@
         "silverstripe/framework": "^5"
     },
     "extra": {
-        "installer-name": "betternavigator",
         "expose": [
             "css",
             "images",

@@ -21,15 +21,11 @@ Silverstripe 5.0 (4.0+ and 3.1+ through previous releases)
 
 ## Installation
 
-**Composer / Packagist ([best practice](http://doc.silverstripe.org/framework/en/trunk/installation/composer))**
-Add "jonom/silverstripe-betternavigator" to your requirements.
+Add "jonom/silverstripe-betternavigator" to your composer requirements.
 
 ```
 composer require jonom/silverstripe-betternavigator
 ```
-
-**Manually**
-Download, place the folder in your project root, rename it to 'betternavigator' (if applicable) and run a dev/build?flush=1.
 
 ## How to use
 
@@ -53,7 +49,7 @@ public function showBetterNavigator()
 You can mark certain CMS users as developers in your site's config, so they can access developer tools when logged in. Example YAML:
 
 ```
-BetterNavigator:
+JonoM\BetterNavigator:
   developers:
     - 'dev@yoursite.com'
     - 'otherdev@yoursite.com'
@@ -64,14 +60,14 @@ BetterNavigator:
 BetterNavigator can be made translucent when collapsed by adding the following config setting:
 
 ```
-BetterNavigator:
+JonoM\BetterNavigator:
   translucent: true
 ```
 
 BetterNavigator's default position is 'right-top', but can be changed to 'right-bottom', 'left-top' or 'left-bottom'. Example:
 
 ```
-BetterNavigator:
+JonoM\BetterNavigator:
   position: 'right-bottom'
 ```
 
@@ -113,6 +109,7 @@ By default users are required to have at least the `CMS_ACCESS_CMSMain` permissi
 My\Namespace\EventController:
   better_navigator_edit_permission: "CUSTOM_PERMISSION_CODE"
   better_navigator_edit_permission_mode: "any" #Optional, but can be either "any" or "all" (defaults to "all")
+```
 
 ## Bonus: better debugging tools
 

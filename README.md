@@ -27,6 +27,10 @@ Add "jonom/silverstripe-betternavigator" to your composer requirements.
 composer require jonom/silverstripe-betternavigator
 ```
 
+## Upgrading
+
+* **6.0:** the namespace for this module's templates and configuration was changed in v6 to include a `JonoM` prefix. You may need to update your template directory structure and/or app configuration accordingly.
+
 ## How to use
 
 The navigator is auto-injected into your template, and no code changes are needed.

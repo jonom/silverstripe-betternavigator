@@ -1,0 +1,24 @@
+{
+  "name": "silverstripe-betternavigator",
+  "description": "Front-end utility menu for SilverStripe websites featuring administration and development tools",
+  "scripts": {
+    "build": "sass --style compressed scss/betternavigator.scss css/betternavigator.css",
+    "watch": "sass --watch scss/betternavigator.scss css/betternavigator.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonom/silverstripe-betternavigator.git"
+  },
+  "keywords": [
+    "silverstripe",
+    "navigator"
+  ],
+  "author": "https://github.com/jonom",
+  "bugs": {
+    "url": "https://github.com/jonom/silverstripe-betternavigator/issues"
+  },
+  "homepage": "https://github.com/jonom/silverstripe-betternavigator#readme",
+  "devDependencies": {
+    "sass": "^1.64.1"
+  }
+}

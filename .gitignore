@@ -1,0 +1,7 @@
+# Ignore dependencies
+node_modules
+vendor
+
+# Ignore operating system files
+.DS_Store
+Thumbs.db

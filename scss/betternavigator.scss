@@ -10,16 +10,16 @@ $black: #000;
 $white: #FFF;
 
 $textColor: $white;
-$contentColor: #71767a;
-$contentBackground: #cfd8de;
+$contentColor: #595D61;
+$contentBackground: #CFD8DE;
 $buttonColor: #313639;
-$buttonColorDisabled: #51565a;
-$buttonBackground: #eceff2;
-$buttonBackgroundDisabled: #afbac0;
-$buttonBorder: #a3aaaf;
-$liveColor: #39b54a;
-$stageColor: #f26c4f;
-$archiveColor: #6f6f6f;
+$buttonColorDisabled: #51565A;
+$buttonBackground: #ECEFF2;
+$buttonBackgroundDisabled: #C6D3DA;
+$buttonBorder: #A3AAAF;
+$liveColor: #4A831C;
+$stageColor: #C0462B;
+$archiveColor: #6F6F6F;
 
 // Icons
 span[class^='bn-icon'],
@@ -189,6 +189,7 @@ span[class*=' bn-icon']{
     cursor: pointer;
     padding: 10px 15px 8px;
     font-weight: bold;
+    transition: 100ms background-color ease-in-out;
 
     .bn-icon-cog {
       margin: -4px 8px -4px -4px;
@@ -241,9 +242,9 @@ span[class*=' bn-icon']{
     border: 1px solid mix($black, $contentBackground, 10%);
     border-width: 0 0 1px 1px;
     min-width: 140px;
+    transition: 100ms background-color ease-in-out;
 
     .bn-heading {
-        text-align: center;
         text-transform: uppercase;
         font-size: 11px;
         margin: 8px 0 4px 0;
@@ -274,16 +275,26 @@ span[class*=' bn-icon']{
     }
 
     a:focus,
-    a:hover,
-    a:active {
+    a:hover {
         background: $white;
         color: $black;
+    }
+
+    a:active {
+        background: mix($black, $buttonBackground, 10%);
+        border-color: mix($white, $buttonBorder, 10%);
     }
 
     span.bn-disabled {
         background: $buttonBackgroundDisabled;
         color: $buttonColorDisabled;
         cursor: default;
+    }
+
+    .bn-links {
+        > :last-child {
+            margin-bottom: 0;
+        }
     }
 }
 

@@ -49,8 +49,7 @@
 
                 <% if $Mode='dev' %>
                     <span class="bn-disabled" title="<%t JonoM\BetterNavigator.END_DEV_MODE_TITLE 'Log out to end Dev Mode' %>">
-                        <span class="bn-icon-tick"></span>
-                        <%t JonoM\BetterNavigator.DEV_MOVE_ON_LABEL 'Dev mode on' %>
+                        <span class="bn-icon-tick"></span><%t JonoM\BetterNavigator.DEV_MOVE_ON_LABEL 'Dev mode on' %>
                     </span>
                 <% else %>
                     <a href="{$AbsoluteLink}?isDev=1"><span class="bn-icon-devmode"></span><%t JonoM\BetterNavigator.DEV_MODE_LABEL 'Dev mode' %></a>

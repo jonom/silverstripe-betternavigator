@@ -44,7 +44,7 @@
 
         <% if $Mode == 'dev' || $IsDeveloper %>
 
-        <h3 class="bn-heading"><%t JonoM\BetterNavigator.DEVELOPER_TOOLS_HEADING 'Developer tools' %></h2>
+            <h3 class="bn-heading"><%t JonoM\BetterNavigator.DEVELOPER_TOOLS_HEADING 'Developer tools' %></h2>
 
             <ul class="bn-links">
 
@@ -79,7 +79,7 @@
 
         <% if $Mode == 'dev' %>
 
-        <h3 class="bn-heading"><%t JonoM\BetterNavigator.DEBUGGING_HEADING 'Debugging' %></h2>
+            <h3 class="bn-heading"><%t JonoM\BetterNavigator.DEBUGGING_HEADING 'Debugging' %></h2>
 
             <ul class="bn-links">
 

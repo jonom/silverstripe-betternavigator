@@ -52,6 +52,11 @@ function initialiseBetterNavigator() {
     if (getCookie('BetterNavigator') === 'open') {
         BetterNavigator.classList.add('open');
         BetterNavigator.classList.remove('collapsed');
+
+        // update the button state
+        BetterNavigatorStatusButton.setAttribute('aria-expanded', 'true');
+        BetterNavigatorStatusIcon.classList.remove('bn-icon-cog');
+        BetterNavigatorStatusIcon.classList.add('bn-icon-close');
     }
 
     if (BetterNavigatorLogoutForm) {

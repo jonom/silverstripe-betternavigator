@@ -30,8 +30,8 @@ span[class*=' bn-icon']{
 .bn-icon-close {
     @extend .svg-images--bn-icon--close;
     @extend .svg-images--bn-icon--close-dims;
-    transform: scale(0.8);
-    margin: -3px -6px 0 0;
+    margin: -4px -6px 0 0;
+    transform: scale(1.1);
 }
 
 .bn-icon-cog {

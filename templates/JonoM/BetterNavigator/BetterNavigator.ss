@@ -59,15 +59,13 @@
                 <a href="{$AbsoluteLink}?flush=1"
                    title="<%t JonoM\BetterNavigator.FLUSH_CACHE_TITLE 'Flush templates and manifest, and regenerate images for this page (behaviour varies by Framework version)' %>"
                 >
-                    <span class="bn-icon-flush"></span>
-                    <%t JonoM\BetterNavigator.FLUSH_CACHE_LABEL 'Flush caches' %>
+                    <span class="bn-icon-flush"></span><%t JonoM\BetterNavigator.FLUSH_CACHE_LABEL 'Flush caches' %>
                 </a>
                 <a href="/dev/build/?flush=1"
                    target="_blank"
                    title="<%t JonoM\BetterNavigator.BUILD_DATABASE_TITLE 'Build database and flush caches (excludes template caches pre SS-3.1.7)' %>"
                 >
-                    <span class="bn-icon-db"></span>
-                    <%t JonoM\BetterNavigator.BUILD_DATABASE_LABEL 'Build database' %>
+                    <span class="bn-icon-db"></span><%t JonoM\BetterNavigator.BUILD_DATABASE_LABEL 'Build database' %>
                 </a>
                 <a href="/dev/" target="_blank"><span class="bn-icon-tools"></span><%t JonoM\BetterNavigator.DEV_MENU_LABEL 'Dev menu' %></a>
 
@@ -86,44 +84,37 @@
                 <a href="{$AbsoluteLink}?showtemplate=1"
                    title="<%t JonoM\BetterNavigator.SHOW_TEMPLATE_TITLE 'Show the compiled version of all the templates used, including line numbers. Good when you have a syntax error in a template. Cannot be used on a Live site without isDev' %>"
                 >
-                    <span class="bn-icon-info"></span>
-                    <%t JonoM\BetterNavigator.SHOW_TEMPLATE_LABEL 'Show template' %>
+                    <span class="bn-icon-info"></span><%t JonoM\BetterNavigator.SHOW_TEMPLATE_LABEL 'Show template' %>
                 </a>
                 <a href="{$AbsoluteLink}?execmetric=1"
                    title="<%t JonoM\BetterNavigator.EXEC_METRIC_TITLE 'Display the execution time and peak memory usage for the request' %>"
                 >
-                    <span class="bn-icon-info"></span>
-                    <%t JonoM\BetterNavigator.SHOW_METRICS_LABEL 'Show metrics' %>
+                    <span class="bn-icon-info"></span><%t JonoM\BetterNavigator.SHOW_METRICS_LABEL 'Show metrics' %>
                 </a>
                 <a href="{$AbsoluteLink}?debug=1"
                    title="<%t JonoM\BetterNavigator.DEBUG_PAGE_TITLE 'Show a collection of debugging information about the director / controller operation' %>"
                 >
-                    <span class="bn-icon-info"></span>
-                    <%t JonoM\BetterNavigator.DEBUG_PAGE_LABEL 'Debug page' %>
+                    <span class="bn-icon-info"></span><%t JonoM\BetterNavigator.DEBUG_PAGE_LABEL 'Debug page' %>
                 </a>
                 <a href="{$AbsoluteLink}?debug_request=1"
                    title="<%t JonoM\BetterNavigator.DEBUG_REQUEST_TITLE 'Show all steps of the request from initial HTTPRequest to Controller to Template Rendering' %>"
                 >
-                    <span class="bn-icon-info"></span>
-                    <%t JonoM\BetterNavigator.DEBUG_REQUEST_LABEL 'Debug request' %>
+                    <span class="bn-icon-info"></span><%t JonoM\BetterNavigator.DEBUG_REQUEST_LABEL 'Debug request' %>
                 </a>
                 <a href="{$AbsoluteLink}?debugfailover=1"
                    title="<%t JonoM\BetterNavigator.DEBUG_FAILOVER_TITLE 'Shows failover methods from classes extended' %>"
                 >
-                    <span class="bn-icon-info"></span>
-                    <%t JonoM\BetterNavigator.DEBUG_FAILOVER_LABEL 'Debug failover' %>
+                    <span class="bn-icon-info"></span><%t JonoM\BetterNavigator.DEBUG_FAILOVER_LABEL 'Debug failover' %>
                 </a>
                 <a href="{$AbsoluteLink}?showqueries=1"
                    title="<%t JonoM\BetterNavigator.SHOW_QUERIES_TITLE 'List all SQL queries executed' %>"
                 >
-                    <span class="bn-icon-info"></span>
-                    <%t JonoM\BetterNavigator.SHOW_QUERIES_LABEL 'Show queries' %>
+                    <span class="bn-icon-info"></span><%t JonoM\BetterNavigator.SHOW_QUERIES_LABEL 'Show queries' %>
                 </a>
                 <a href="{$AbsoluteLink}?previewwrite=1"
                    title="<%t JonoM\BetterNavigator.PREVIEW_WRITE_TITLE "List all insert / update SQL queries, and don't execute them. Useful for previewing writes to the database" %>"
                 >
-                    <span class="bn-icon-info"></span>
-                    <%t JonoM\BetterNavigator.PREVIEW_WRITE_LABEL 'Preview write' %>
+                    <span class="bn-icon-info"></span><%t JonoM\BetterNavigator.PREVIEW_WRITE_LABEL 'Preview write' %>
                 </a>
 
             </div>

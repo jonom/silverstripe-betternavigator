@@ -1,15 +1,92 @@
-@import "compass/css3";
-@import "compass/utilities/sprites";
+/**
+ * Better navigator styles
+ */
 
-//Icons
-$bn-icon-sprite-dimensions: true;
-@import "bn-icon/*.png";
-@include all-bn-icon-sprites;
-span[class^='bn-icon'],span[class*=' bn-icon']{
+@import "_iconsprite";
+
+// Variables
+
+$black: #000;
+$white: #FFF;
+
+$textColor: $white;
+$contentColor: #71767a;
+$contentBackground: #cfd8de;
+$buttonColor: #313639;
+$buttonColorDisabled: #51565a;
+$buttonBackground: #eceff2;
+$buttonBackgroundDisabled: #afbac0;
+$buttonBorder: #a3aaaf;
+$liveColor: #39b54a;
+$stageColor: #f26c4f;
+$archiveColor: #6f6f6f;
+
+// Icons
+span[class^='bn-icon'],
+span[class*=' bn-icon']{
   display: inline-block;
 }
 
-//Container
+.bn-icon-close {
+    @extend .svg-images--bn-icon--close;
+    @extend .svg-images--bn-icon--close-dims;
+    transform: scale(0.8);
+    margin: -1px -6px 0 0;
+}
+
+.bn-icon-cog {
+    @extend .svg-images--bn-icon--cog;
+    @extend .svg-images--bn-icon--cog-dims;
+}
+
+.bn-icon-db {
+    @extend .svg-images--bn-icon--db;
+    @extend .svg-images--bn-icon--db-dims;
+    transform: scale(0.8);
+}
+
+.bn-icon-edit {
+    @extend .svg-images--bn-icon--edit;
+    @extend .svg-images--bn-icon--edit-dims;
+    transform: scale(0.9);
+}
+
+.bn-icon-flush {
+    @extend .svg-images--bn-icon--flush;
+    @extend .svg-images--bn-icon--flush-dims;
+    transform: scale(0.8);
+}
+
+.bn-icon-info {
+    @extend .svg-images--bn-icon--info;
+    @extend .svg-images--bn-icon--info-dims;
+    transform: scale(0.8);
+}
+
+.bn-icon-tick {
+    @extend .svg-images--bn-icon--tick;
+    @extend .svg-images--bn-icon--tick-dims;
+    transform: scale(0.85);
+}
+
+.bn-icon-tools {
+    @extend .svg-images--bn-icon--tools;
+    @extend .svg-images--bn-icon--tools-dims;
+    transform: scale(0.9);
+}
+
+.bn-icon-user {
+    @extend .svg-images--bn-icon--user;
+    @extend .svg-images--bn-icon--user-dims;
+}
+
+.bn-icon-view {
+    @extend .svg-images--bn-icon--view;
+    @extend .svg-images--bn-icon--view-dims;
+    transform: scale(0.95);
+}
+
+// Container
 
 #BetterNavigator {
     position: fixed;
@@ -29,7 +106,7 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
         display:none;
     }
 
-    //Toggle states
+    // Toggle states
 
     &.collapsed {
         box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
@@ -49,6 +126,7 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
             .bn-icon-close {
                 display: none;
             }
+
             .bn-icon-cog {
                 display: inline-block;
             }
@@ -64,8 +142,8 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
         top: 0;
 
         &.collapsed {
-            @include transform-origin(right, top);
-            @include transform(rotate(90deg) translate(100%, 0));
+            transform-origin: right top;
+            transform: rotate(90deg) translate(100%, 0);
         }
     }
 
@@ -74,8 +152,8 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
         bottom: 0;
 
         &.collapsed {
-            @include transform-origin(right, bottom);
-            @include transform(rotate(90deg) translate(0, 100%));
+            transform-origin: right bottom;
+            transform: rotate(90deg) translate(0, 100%);
         }
     }
 
@@ -84,8 +162,8 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
         bottom: 0;
 
         &.collapsed {
-            @include transform-origin(left, bottom);
-            @include transform(rotate(90deg) translate(-100%, 0));
+            transform-origin: left bottom;
+            transform: rotate(90deg) translate(-100%, 0);
         }
     }
 
@@ -94,22 +172,18 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
         top: 0;
 
         &.collapsed {
-            @include transform-origin(left, top);
-            @include transform(rotate(90deg) translate(0, -100%));
+            transform-origin: left top;
+            transform: rotate(90deg) translate(0, -100%);
         }
     }
 }
 
-//Status
-
-$liveColor: #39b54a;
-$stageColor: #f26c4f;
-$archiveColor: #6f6f6f;
+// Status
 
 #BetterNavigatorStatus {
-    color: #fff;
+    color: $textColor;
     background: $archiveColor;
-    border: 1px solid shade($archiveColor, 10);
+    border: 1px solid mix($black, $archiveColor, 10%);
     border-width: 0;
     text-transform: uppercase;
     cursor: pointer;
@@ -123,7 +197,6 @@ $archiveColor: #6f6f6f;
 
     .bn-icon-close {
       float: right;
-      margin: 1px 0 0 0;
     }
 
     .bn-icon-cog,
@@ -132,7 +205,7 @@ $archiveColor: #6f6f6f;
     }
 
     &:hover {
-        background: shade($archiveColor, 5);
+        background: mix($black, $archiveColor, 5%);
 
         .bn-icon-cog,
         .bn-icon-close {
@@ -142,31 +215,32 @@ $archiveColor: #6f6f6f;
 
     &.Live {
         background: $liveColor;
-        border-color: shade($liveColor, 10);
+        border-color: mix($black, $liveColor, 10%);
 
         &:hover {
-            background: shade($liveColor, 5);
+            background: mix($black, $liveColor, 5%);
         }
     }
 
     &.Draft {
         background: $stageColor;
-        border-color: shade($stageColor, 10);
+        border-color: mix($black, $stageColor, 10%);
 
         &:hover {
-            background: shade($stageColor, 5);
+            background: mix($black, $stageColor, 5%);
         }
     }
 }
 
-//Content
+// Content
 
 #BetterNavigatorContent {
     padding: 6px;
-    color: #71767a;
-    background: #cfd8de;
-    border: 1px solid shade(#cfd8de, 10);
+    color: $contentColor;
+    background: $contentBackground;
+    border: 1px solid mix($black, $contentBackground, 10%);
     border-width: 0 0 1px 1px;
+    min-width: 140px;
 
     .bn-heading {
         text-align: center;
@@ -183,12 +257,12 @@ $archiveColor: #6f6f6f;
     a,
     span.bn-disabled {
         display: block;
-        background: #eceff2;
-        color: #313639;
+        background: $buttonBackground;
+        color: $buttonColor;
         font-family: Helvetica, Arial, sans-serif;
         font-size: 12px;
         border-radius: 5px;
-        border-bottom: 1px solid #a3aaaf;
+        border-bottom: 1px solid $buttonBorder;
         margin: 0 0 4px 0;
         padding: 6px 10px 5px 10px;
         line-height: 16px;
@@ -202,18 +276,18 @@ $archiveColor: #6f6f6f;
     a:focus,
     a:hover,
     a:active {
-        background: #fff;
-        color: #000;
+        background: $white;
+        color: $black;
     }
 
     span.bn-disabled {
-        background: #afbac0;
-        color: #51565a;
+        background: $buttonBackgroundDisabled;
+        color: $buttonColorDisabled;
         cursor: default;
     }
 }
 
-//Some help for debugging info
+// Some help for debugging info
 body > p.message {
     text-align: left;
     background: #fff;

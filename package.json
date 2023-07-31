@@ -2,7 +2,9 @@
   "name": "silverstripe-betternavigator",
   "description": "Front-end utility menu for SilverStripe websites featuring administration and development tools",
   "scripts": {
-    "build": "sass --style compressed scss/betternavigator.scss css/betternavigator.css",
+    "build:svg": "svg-sprite --css --css-render-scss --css-render-scss-dest=../scss/_iconsprite --css-bust ./images/bn-icon/*.svg",
+    "build:scss": "sass --style compressed scss/betternavigator.scss css/betternavigator.css",
+    "build": "npm run build:svg && npm run build:scss",
     "watch": "sass --watch scss/betternavigator.scss css/betternavigator.css"
   },
   "repository": {
@@ -19,6 +21,8 @@
   },
   "homepage": "https://github.com/jonom/silverstripe-betternavigator#readme",
   "devDependencies": {
-    "sass": "^1.64.1"
+    "sass": "^1.64.1",
+    "svg-sprite": "^2.0.2",
+    "svg-sprite-loader": "^6.0.11"
   }
 }

@@ -31,7 +31,7 @@ span[class*=' bn-icon']{
     @extend .svg-images--bn-icon--close;
     @extend .svg-images--bn-icon--close-dims;
     transform: scale(0.8);
-    margin: -1px -6px 0 0;
+    margin: -3px -6px 0 0;
 }
 
 .bn-icon-cog {
@@ -122,14 +122,7 @@ span[class*=' bn-icon']{
 
         #BetterNavigatorStatus {
             border-width: 1px;
-
-            .bn-icon-close {
-                display: none;
-            }
-
-            .bn-icon-cog {
-                display: inline-block;
-            }
+            padding: 10px 15px 8px 35px;
         }
 
         #BetterNavigatorContent {
@@ -190,10 +183,24 @@ span[class*=' bn-icon']{
     padding: 10px 15px 8px;
     font-weight: bold;
     transition: 100ms background-color ease-in-out;
+    font-size: 14px;
+    margin: 0;
+
+    #BetterNavigatorStatusButton {
+        appearance: none;
+        width: 100%;
+        height: 38px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: 0;
+        background: transparent;
+        text-align: left;
+        padding: 2px 14px 0;
+    }
 
     .bn-icon-cog {
-      margin: -4px 8px -4px -4px;
-      display: none;
+      margin: -4px 8px -2px -4px;
     }
 
     .bn-icon-close {
@@ -205,7 +212,8 @@ span[class*=' bn-icon']{
       opacity: .7;
     }
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
         background: mix($black, $archiveColor, 5%);
 
         .bn-icon-cog,
@@ -248,6 +256,7 @@ span[class*=' bn-icon']{
         text-transform: uppercase;
         font-size: 11px;
         margin: 8px 0 4px 0;
+        font-weight: normal;
     }
 
     span[class^='bn-icon'],
@@ -256,7 +265,7 @@ span[class*=' bn-icon']{
     }
 
     a,
-    span.bn-disabled {
+    .bn-disabled {
         display: block;
         background: $buttonBackground;
         color: $buttonColor;
@@ -274,7 +283,7 @@ span[class*=' bn-icon']{
         }
     }
 
-    a:focus,
+    a:focus-visible,
     a:hover {
         background: $white;
         color: $black;
@@ -285,13 +294,18 @@ span[class*=' bn-icon']{
         border-color: mix($white, $buttonBorder, 10%);
     }
 
-    span.bn-disabled {
+    .bn-disabled {
         background: $buttonBackgroundDisabled;
         color: $buttonColorDisabled;
         cursor: default;
+        pointer-events: none;
     }
 
     .bn-links {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+
         > :last-child {
             margin-bottom: 0;
         }

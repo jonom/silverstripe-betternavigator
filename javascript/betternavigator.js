@@ -18,6 +18,8 @@ function initialiseBetterNavigator() {
     // Dom elements
     var BetterNavigator = document.getElementById("BetterNavigator");
     var BetterNavigatorStatus = document.getElementById("BetterNavigatorStatus");
+    var BetterNavigatorStatusButton = document.getElementById("BetterNavigatorStatusButton");
+    var BetterNavigatorStatusIcon = document.getElementById("BetterNavigatorStatusIcon");
     var BetterNavigatorLogoutLink = document.getElementById("BetterNavigatorLogoutLink");
     var BetterNavigatorLogoutForm = document.getElementById("LogoutForm_BetterNavigatorLogoutForm");
 
@@ -26,10 +28,22 @@ function initialiseBetterNavigator() {
         if (BetterNavigator.classList.contains('collapsed')) {
             BetterNavigator.classList.add('open');
             BetterNavigator.classList.remove('collapsed');
+
+            // update the button state
+            BetterNavigatorStatusButton.setAttribute('aria-expanded', 'true');
+            BetterNavigatorStatusIcon.classList.remove('bn-icon-cog');
+            BetterNavigatorStatusIcon.classList.add('bn-icon-close');
+
             document.cookie = "BetterNavigator=open;path=/";
         } else {
             BetterNavigator.classList.add('collapsed');
             BetterNavigator.classList.remove('open');
+
+            // update the button state
+            BetterNavigatorStatusButton.setAttribute('aria-expanded', 'false');
+            BetterNavigatorStatusIcon.classList.remove('bn-icon-close');
+            BetterNavigatorStatusIcon.classList.add('bn-icon-cog');
+
             document.cookie = "BetterNavigator=collapsed;path=/";
         }
     };

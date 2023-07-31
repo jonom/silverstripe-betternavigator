@@ -4,6 +4,8 @@ de:
     VIEWING_DRAFT: 'Entwurf'
     VIEWING_ARCHIVED: 'Archiviert'
 
+    ARIA_MENU_LABEL: 'Werkzeugmenü'
+
     DEVELOPER_TOOLS_HEADING: 'Entwickler Tools'
     DEBUGGING_HEADING: 'Debugging'
 

@@ -18,7 +18,7 @@
                     <% if $LiveLink.Link %>
                         <a href="$LiveLink.Link"><span class="bn-icon-view"></span><%t JonoM\BetterNavigator.VIEW_LIVE_LABEL 'View live' %></a>
                     <% else %>
-                        <a href="$LiveLink.Link" aria-disabled="true" class="bn-disabled"><span class="bn-icon-view"></a><%t JonoM\BetterNavigator.NOT_YET_PUBLISHED_LABEL 'Not yet published' %></a>
+                        <a href="$LiveLink.Link" aria-disabled="true" class="bn-disabled"><span class="bn-icon-view"></span><%t JonoM\BetterNavigator.NOT_YET_PUBLISHED_LABEL 'Not yet published' %></a>
                     <% end_if %>
                 <% end_if %>
                 <% if not $StageLink.Active %>

@@ -18,7 +18,6 @@ function initialiseBetterNavigator() {
     // Dom elements
     var BetterNavigator = document.getElementById("BetterNavigator");
     var BetterNavigatorStatus = document.getElementById("BetterNavigatorStatus");
-    var BetterNavigatorStatusButton = document.getElementById("BetterNavigatorStatusButton");
     var BetterNavigatorStatusIcon = document.getElementById("BetterNavigatorStatusIcon");
     var BetterNavigatorLogoutLink = document.getElementById("BetterNavigatorLogoutLink");
     var BetterNavigatorLogoutForm = document.getElementById("LogoutForm_BetterNavigatorLogoutForm");
@@ -30,7 +29,7 @@ function initialiseBetterNavigator() {
             BetterNavigator.classList.remove('collapsed');
 
             // update the button state
-            BetterNavigatorStatusButton.setAttribute('aria-expanded', 'true');
+            BetterNavigatorStatus.setAttribute('aria-expanded', 'true');
             BetterNavigatorStatusIcon.classList.remove('bn-icon-cog');
             BetterNavigatorStatusIcon.classList.add('bn-icon-close');
 
@@ -40,7 +39,7 @@ function initialiseBetterNavigator() {
             BetterNavigator.classList.remove('open');
 
             // update the button state
-            BetterNavigatorStatusButton.setAttribute('aria-expanded', 'false');
+            BetterNavigatorStatus.setAttribute('aria-expanded', 'false');
             BetterNavigatorStatusIcon.classList.remove('bn-icon-close');
             BetterNavigatorStatusIcon.classList.add('bn-icon-cog');
 
@@ -54,7 +53,7 @@ function initialiseBetterNavigator() {
         BetterNavigator.classList.remove('collapsed');
 
         // update the button state
-        BetterNavigatorStatusButton.setAttribute('aria-expanded', 'true');
+        BetterNavigatorStatus.setAttribute('aria-expanded', 'true');
         BetterNavigatorStatusIcon.classList.remove('bn-icon-cog');
         BetterNavigatorStatusIcon.classList.add('bn-icon-close');
     }

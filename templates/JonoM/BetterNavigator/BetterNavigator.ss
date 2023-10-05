@@ -1,11 +1,9 @@
 <section id="BetterNavigator" class="collapsed $CssClass" aria-label="Better navigator - $ViewingTitle page">
 
-    <h2 id="BetterNavigatorStatus" class="$Viewing" tabindex="-1">
-        <button id="BetterNavigatorStatusButton" aria-expanded="false" aria-controls="BetterNavigator" aria-label="<%t JonoM\BetterNavigator.ARIA_MENU_LABEL 'Tool menu' %>">
-            <span id="BetterNavigatorStatusIcon" class="bn-icon-cog"></span>
-        </button>
-        $ViewingTitle
-    </h2>
+    <button id="BetterNavigatorStatus" class="$Viewing" aria-expanded="false" aria-controls="BetterNavigatorContent" aria-label="<%t JonoM\BetterNavigator.ARIA_MENU_LABEL 'Tool menu' %>">
+        <span id="BetterNavigatorStatusIcon" class="bn-icon-cog"></span>
+        <span class="status-text" aria-hidden="true">$ViewingTitle</span>
+    </button>
 
     <div id="BetterNavigatorContent">
 
@@ -44,7 +42,7 @@
 
         <% if $Mode == 'dev' || $IsDeveloper %>
 
-            <h3 class="bn-heading"><%t JonoM\BetterNavigator.DEVELOPER_TOOLS_HEADING 'Developer tools' %></h2>
+            <h2 class="bn-heading"><%t JonoM\BetterNavigator.DEVELOPER_TOOLS_HEADING 'Developer tools' %></h2>
 
             <ul class="bn-links">
 
@@ -79,7 +77,7 @@
 
         <% if $Mode == 'dev' %>
 
-            <h3 class="bn-heading"><%t JonoM\BetterNavigator.DEBUGGING_HEADING 'Debugging' %></h2>
+            <h2 class="bn-heading"><%t JonoM\BetterNavigator.DEBUGGING_HEADING 'Debugging' %></h2>
 
             <ul class="bn-links">
 

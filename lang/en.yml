@@ -4,6 +4,8 @@ en:
     VIEWING_DRAFT: 'Draft'
     VIEWING_ARCHIVED: 'Archived'
 
+    ARIA_MENU_LABEL: 'Tool menu'
+
     DEVELOPER_TOOLS_HEADING: 'Developer tools'
     DEBUGGING_HEADING: 'Debugging'
 

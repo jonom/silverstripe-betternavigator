@@ -1,25 +1,42 @@
-@import "compass/css3";
-@import "compass/utilities/sprites";
+/**
+ * Better navigator styles
+ */
 
-//Icons
-$bn-icon-sprite-dimensions: true;
-@import "bn-icon/*.png";
-@include all-bn-icon-sprites;
-span[class^='bn-icon'],span[class*=' bn-icon']{
-  display: inline-block;
-}
+@import "_iconsprite";
 
-//Container
+// Variables
+
+$black: #000;
+$white: #FFF;
+
+$textColor: $white;
+$contentColor: #595D61;
+$contentBackground: #CFD8DE;
+$buttonColor: #313639;
+$buttonColorDisabled: #51565A;
+$buttonBackground: #ECEFF2;
+$buttonBackgroundDisabled: #C6D3DA;
+$buttonBorder: #A3AAAF;
+$liveColor: #06AD18;
+$stageColor: #E6674B;
+$archiveColor: #6F6F6F;
+
+// Container
 
 #BetterNavigator {
     position: fixed;
     z-index: 99999;
     max-height: 100%;
-    overflow: auto;
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 12px;
-    line-height: 16px;
     text-align: left;
+
+    * {
+        // Reset all styles to avoid inheriting from
+        // the parent page theme
+        all: initial;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        line-height: 1.2;
+    }
 
     a {
         text-decoration: none;
@@ -29,7 +46,7 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
         display:none;
     }
 
-    //Toggle states
+    // Toggle states
 
     &.collapsed {
         box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
@@ -45,13 +62,7 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
 
         #BetterNavigatorStatus {
             border-width: 1px;
-
-            .bn-icon-close {
-                display: none;
-            }
-            .bn-icon-cog {
-                display: inline-block;
-            }
+            padding: 0 14px;
         }
 
         #BetterNavigatorContent {
@@ -64,8 +75,8 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
         top: 0;
 
         &.collapsed {
-            @include transform-origin(right, top);
-            @include transform(rotate(90deg) translate(100%, 0));
+            transform-origin: right top;
+            transform: rotate(90deg) translate(100%, 0);
         }
     }
 
@@ -74,8 +85,8 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
         bottom: 0;
 
         &.collapsed {
-            @include transform-origin(right, bottom);
-            @include transform(rotate(90deg) translate(0, 100%));
+            transform-origin: right bottom;
+            transform: rotate(90deg) translate(0, 100%);
         }
     }
 
@@ -84,8 +95,8 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
         bottom: 0;
 
         &.collapsed {
-            @include transform-origin(left, bottom);
-            @include transform(rotate(90deg) translate(-100%, 0));
+            transform-origin: left bottom;
+            transform: rotate(90deg) translate(-100%, 0);
         }
     }
 
@@ -94,126 +105,252 @@ span[class^='bn-icon'],span[class*=' bn-icon']{
         top: 0;
 
         &.collapsed {
-            @include transform-origin(left, top);
-            @include transform(rotate(90deg) translate(0, -100%));
+            transform-origin: left top;
+            transform: rotate(90deg) translate(0, -100%);
         }
+    }
+
+    // Icons
+    span[class^='bn-icon'],
+    span[class*=' bn-icon']{
+        display: inline-block;
+    }
+
+    .bn-icon-close {
+        @extend .svg-images--bn-icon--close;
+        @extend .svg-images--bn-icon--close-dims;
+        transform: scale(1.3);
+    }
+
+    .bn-icon-cog {
+        @extend .svg-images--bn-icon--cog;
+        @extend .svg-images--bn-icon--cog-dims;
+    }
+
+    .bn-icon-db {
+        @extend .svg-images--bn-icon--db;
+        @extend .svg-images--bn-icon--db-dims;
+        transform: scale(0.8);
+    }
+
+    .bn-icon-edit {
+        @extend .svg-images--bn-icon--edit;
+        @extend .svg-images--bn-icon--edit-dims;
+        transform: scale(0.9);
+    }
+
+    .bn-icon-flush {
+        @extend .svg-images--bn-icon--flush;
+        @extend .svg-images--bn-icon--flush-dims;
+        transform: scale(0.8);
+    }
+
+    .bn-icon-info {
+        @extend .svg-images--bn-icon--info;
+        @extend .svg-images--bn-icon--info-dims;
+        transform: scale(0.7);
+    }
+
+    .bn-icon-tick {
+        @extend .svg-images--bn-icon--tick;
+        @extend .svg-images--bn-icon--tick-dims;
+        transform: scale(0.7);
+    }
+
+    .bn-icon-tools {
+        @extend .svg-images--bn-icon--tools;
+        @extend .svg-images--bn-icon--tools-dims;
+        transform: scale(0.9);
+    }
+
+    .bn-icon-user {
+        @extend .svg-images--bn-icon--user;
+        @extend .svg-images--bn-icon--user-dims;
+    }
+
+    .bn-icon-view {
+        @extend .svg-images--bn-icon--view;
+        @extend .svg-images--bn-icon--view-dims;
+        transform: scale(0.95);
     }
 }
 
-//Status
-
-$liveColor: #39b54a;
-$stageColor: #f26c4f;
-$archiveColor: #6f6f6f;
+// Status
 
 #BetterNavigatorStatus {
-    color: #fff;
+    display: block;
+    width: calc(100% - 15px - 15px);
+    height: 30px;
+    appearance: none;
     background: $archiveColor;
-    border: 1px solid shade($archiveColor, 10);
-    border-width: 0;
-    text-transform: uppercase;
+    border: 1px solid mix($black, $archiveColor, 10%);
     cursor: pointer;
-    padding: 10px 15px 8px;
-    font-weight: bold;
+    padding: 0 15px;
+    margin: 0;
+    transition: 100ms background-color ease-in-out;
+    white-space: nowrap;
 
-    .bn-icon-cog {
-      margin: -4px 8px -4px -4px;
-      display: none;
+    .status-text {
+        display: inline-block;
+        text-align: left;
+        color: $textColor;
+        text-transform: uppercase;
+        font-family: inherit;
+        font-weight: bold;
+        font-size: 18.5px;
+        line-height: 1.2;
+        letter-spacing: 0.1px;
     }
 
-    .bn-icon-close {
-      float: right;
-      margin: 1px 0 0 0;
-    }
-
-    .bn-icon-cog,
-    .bn-icon-close {
-      opacity: .7;
-    }
-
-    &:hover {
-        background: shade($archiveColor, 5);
+    &:hover,
+    &:focus-visible {
+        background: mix($black, $archiveColor, 5%);
 
         .bn-icon-cog,
         .bn-icon-close {
-          opacity: 1;
+            opacity: 1;
         }
+    }
+
+    &:focus-visible {
+        outline: 3px solid mix($black, $archiveColor, 10%);
+        outline-offset: 2px;
     }
 
     &.Live {
         background: $liveColor;
-        border-color: shade($liveColor, 10);
+        border-color: mix($black, $liveColor, 10%);
 
         &:hover {
-            background: shade($liveColor, 5);
+            background: mix($black, $liveColor, 5%);
+        }
+
+        &:focus-visible {
+            outline: 3px solid mix($black, $liveColor, 10%);
         }
     }
 
     &.Draft {
         background: $stageColor;
-        border-color: shade($stageColor, 10);
+        border-color: mix($black, $stageColor, 10%);
 
         &:hover {
-            background: shade($stageColor, 5);
+            background: mix($black, $stageColor, 5%);
         }
+
+        &:focus-visible {
+            outline: 3px solid mix($black, $stageColor, 10%);
+        }
+    }
+
+    .bn-icon-cog {
+        margin: -4px 8px -1px -4px;
+    }
+
+    .bn-icon-close {
+        float: right;
+        margin: 3px -6px 0;
+    }
+
+    .bn-icon-cog,
+    .bn-icon-close {
+        opacity: .7;
     }
 }
 
-//Content
+#BetterNavigatorStatusIcon {
+    display: inline-block;
+    cursor: inherit;
+    transition: 100ms opacity ease-in-out;
+}
+
+// Content
 
 #BetterNavigatorContent {
+    display: block;
     padding: 6px;
-    color: #71767a;
-    background: #cfd8de;
-    border: 1px solid shade(#cfd8de, 10);
+    color: $contentColor;
+    background: $contentBackground;
+    border: 1px solid mix($black, $contentBackground, 10%);
     border-width: 0 0 1px 1px;
+    min-width: 140px;
+    overflow: auto;
 
     .bn-heading {
-        text-align: center;
+        display: block;
         text-transform: uppercase;
         font-size: 11px;
+        line-height: 1.2;
+        color: $contentColor;
         margin: 8px 0 4px 0;
+        padding: 0;
+        font-weight: normal;
     }
 
     span[class^='bn-icon'],
     span[class*=' bn-icon'] {
-      margin: -2px 5px -3px -2px;
+        cursor: inherit;
+        margin: -2px 5px -3px -2px;
     }
 
     a,
-    span.bn-disabled {
+    .bn-disabled {
         display: block;
-        background: #eceff2;
-        color: #313639;
+        background: $buttonBackground;
+        color: $buttonColor;
         font-family: Helvetica, Arial, sans-serif;
         font-size: 12px;
+        line-height: 1.4;
         border-radius: 5px;
-        border-bottom: 1px solid #a3aaaf;
+        border-bottom: 1px solid $buttonBorder;
         margin: 0 0 4px 0;
         padding: 6px 10px 5px 10px;
-        line-height: 16px;
         font-weight: bold;
+        cursor: pointer;
+        transition: 100ms background-color ease-in-out;
 
         .light {
             font-weight: normal;
         }
     }
 
-    a:focus,
-    a:hover,
-    a:active {
-        background: #fff;
-        color: #000;
+    a:focus-visible,
+    a:hover {
+        background: $white;
+        color: $black;
     }
 
-    span.bn-disabled {
-        background: #afbac0;
-        color: #51565a;
+    a:focus-visible {
+        border-bottom: 1px solid transparent;
+        outline: 2px solid mix($black, $buttonBorder, 10%);
+        outline-offset: 1px;
+    }
+
+    a:active {
+        background: mix($black, $buttonBackground, 10%);
+        border-color: mix($white, $buttonBorder, 10%);
+    }
+
+    .bn-disabled {
+        background: $buttonBackgroundDisabled;
+        color: $buttonColorDisabled;
         cursor: default;
+        pointer-events: none;
+    }
+
+    .bn-links {
+        display: block;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+
+        > :last-child {
+            margin-bottom: 0;
+        }
     }
 }
 
-//Some help for debugging info
+// Some help for debugging info
 body > p.message {
     text-align: left;
     background: #fff;

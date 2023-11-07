@@ -1,0 +1,114 @@
+%svg-common {
+    background: url("svg/sprite.css-982681f2.svg") no-repeat;
+}
+
+.svg-images--bn-icon--close {
+    @extend %svg-common;
+    background-position: 0 0;
+}
+
+.svg-images--bn-icon--close-dims {
+    width: 16px;
+    height: 16px;
+}
+
+.svg-images--bn-icon--cog {
+    @extend %svg-common;
+    background-position: 33.333333333333336% 0;
+}
+
+.svg-images--bn-icon--cog-dims {
+    width: 16px;
+    height: 16px;
+}
+
+.svg-images--bn-icon--db {
+    @extend %svg-common;
+    background-position: 0 50%;
+}
+
+.svg-images--bn-icon--db-dims {
+    width: 16px;
+    height: 16px;
+}
+
+.svg-images--bn-icon--devmode {
+    @extend %svg-common;
+    background-position: 33.333333333333336% 50%;
+}
+
+.svg-images--bn-icon--devmode-dims {
+    width: 16px;
+    height: 16px;
+}
+
+.svg-images--bn-icon--edit {
+    @extend %svg-common;
+    background-position: 66.66666666666667% 0;
+}
+
+.svg-images--bn-icon--edit-dims {
+    width: 16px;
+    height: 16px;
+}
+
+.svg-images--bn-icon--flush {
+    @extend %svg-common;
+    background-position: 66.66666666666667% 50%;
+}
+
+.svg-images--bn-icon--flush-dims {
+    width: 16px;
+    height: 16px;
+}
+
+.svg-images--bn-icon--info {
+    @extend %svg-common;
+    background-position: 0 100%;
+}
+
+.svg-images--bn-icon--info-dims {
+    width: 16px;
+    height: 16px;
+}
+
+.svg-images--bn-icon--tick {
+    @extend %svg-common;
+    background-position: 33.333333333333336% 100%;
+}
+
+.svg-images--bn-icon--tick-dims {
+    width: 16px;
+    height: 16px;
+}
+
+.svg-images--bn-icon--tools {
+    @extend %svg-common;
+    background-position: 66.66666666666667% 100%;
+}
+
+.svg-images--bn-icon--tools-dims {
+    width: 16px;
+    height: 16px;
+}
+
+.svg-images--bn-icon--user {
+    @extend %svg-common;
+    background-position: 100% 0;
+}
+
+.svg-images--bn-icon--user-dims {
+    width: 16px;
+    height: 16px;
+}
+
+.svg-images--bn-icon--view {
+    @extend %svg-common;
+    background-position: 100% 50%;
+}
+
+.svg-images--bn-icon--view-dims {
+    width: 16px;
+    height: 16px;
+}
+

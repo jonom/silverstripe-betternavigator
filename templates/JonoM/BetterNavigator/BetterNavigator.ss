@@ -1,8 +1,8 @@
-<section id="BetterNavigator" class="collapsed $CssClass" aria-label="Better navigator - $ViewingTitle page">
+<section id="BetterNavigator" class="collapsed $CssClass layoutV2" aria-label="Better navigator - $ViewingTitle page">
 
     <button id="BetterNavigatorStatus" class="$Viewing" aria-expanded="false" aria-controls="BetterNavigatorContent" aria-label="<%t JonoM\BetterNavigator.ARIA_MENU_LABEL 'Tool menu' %>">
-        <span id="BetterNavigatorStatusIcon" class="bn-icon-cog"></span>
         <span class="status-text" aria-hidden="true">$ViewingTitle</span>
+        <span id="BetterNavigatorStatusIcon" class="bn-icon-cog"></span>
     </button>
 
     <div id="BetterNavigatorContent">

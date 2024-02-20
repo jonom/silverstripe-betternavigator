@@ -1,6 +1,6 @@
 # BetterNavigator for Silverstripe
 
-![Diagram of module](images/demo.png)
+<img src="images/demo.png" alt="Diagram of module" width="618" height="393" />
 
 This module is intended to replicate and expand upon the functionality provided by Silverstripe's built-in SilverStripeNavigator class. It provides a handy front-end menu for CMS users which offers these features:
 

@@ -7,19 +7,22 @@
 // Variables
 
 $black: #000;
-$white: #FFF;
+$white: #fff;
 
 $textColor: $white;
-$contentColor: #595D61;
-$contentBackground: #CFD8DE;
+$contentColor: #595d61;
+$contentBackground: #cfd8de;
 $buttonColor: #313639;
-$buttonColorDisabled: #51565A;
-$buttonBackground: #ECEFF2;
-$buttonBackgroundDisabled: #C6D3DA;
-$buttonBorder: #A3AAAF;
-$liveColor: #06AD18;
-$stageColor: #E6674B;
-$archiveColor: #6F6F6F;
+$buttonColorDisabled: #51565a;
+$buttonBackground: #eceff2;
+$buttonBackgroundDisabled: #c6d3da;
+$buttonBorder: #a3aaaf;
+$liveColor: #06ad18;
+$liveBgColor: #068913;
+$stageColor: #e6674b;
+$stageBgColor: #d73f1d;
+$archiveColor: #6f6f6f;
+$archiveBgColor: #6f6f6f;
 
 // Container
 
@@ -27,7 +30,10 @@ $archiveColor: #6F6F6F;
     position: fixed;
     z-index: 99999;
     max-height: 100%;
+    overflow: auto;
     text-align: left;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25),
+        0px 0px 12px rgba(0, 0, 0, 0.15);
 
     * {
         // Reset all styles to avoid inheriting from
@@ -43,14 +49,12 @@ $archiveColor: #6F6F6F;
     }
 
     form {
-        display:none;
+        display: none;
     }
 
     // Toggle states
 
     &.collapsed {
-        box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
-
         &.translucent {
             opacity: 0.5;
             transition: opacity 250ms;
@@ -61,12 +65,15 @@ $archiveColor: #6F6F6F;
         }
 
         #BetterNavigatorStatus {
-            border-width: 1px;
-            padding: 0 14px;
+            padding-right: 12px;
         }
 
         #BetterNavigatorContent {
             display: none;
+        }
+
+        #BetterNavigatorStatusIcon {
+            order: -1;
         }
     }
 
@@ -111,8 +118,8 @@ $archiveColor: #6F6F6F;
     }
 
     // Icons
-    span[class^='bn-icon'],
-    span[class*=' bn-icon']{
+    span[class^="bn-icon"],
+    span[class*=" bn-icon"] {
         display: inline-block;
     }
 
@@ -178,28 +185,33 @@ $archiveColor: #6F6F6F;
 // Status
 
 #BetterNavigatorStatus {
-    display: block;
-    width: calc(100% - 15px - 15px);
-    height: 30px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
     appearance: none;
     background: $archiveColor;
-    border: 1px solid mix($black, $archiveColor, 10%);
     cursor: pointer;
-    padding: 0 15px;
+    padding: 8px 10px 8px 14px;
     margin: 0;
     transition: 100ms background-color ease-in-out;
     white-space: nowrap;
+    color: $textColor;
 
     .status-text {
-        display: inline-block;
         text-align: left;
         color: $textColor;
         text-transform: uppercase;
         font-family: inherit;
         font-weight: bold;
-        font-size: 18.5px;
-        line-height: 1.2;
-        letter-spacing: 0.1px;
+        font-size: 14px;
+        line-height: 1;
+        letter-spacing: 0.4px;
+        padding: 3px 3px 2px;
+        border-radius: 3px;
+        background: $archiveBgColor;
     }
 
     &:hover,
@@ -214,12 +226,15 @@ $archiveColor: #6F6F6F;
 
     &:focus-visible {
         outline: 3px solid mix($black, $archiveColor, 10%);
-        outline-offset: 2px;
+        outline-offset: 0;
     }
 
     &.Live {
         background: $liveColor;
-        border-color: mix($black, $liveColor, 10%);
+
+        .status-text {
+            background: $liveBgColor;
+        }
 
         &:hover {
             background: mix($black, $liveColor, 5%);
@@ -232,7 +247,10 @@ $archiveColor: #6F6F6F;
 
     &.Draft {
         background: $stageColor;
-        border-color: mix($black, $stageColor, 10%);
+
+        .status-text {
+            background: $stageBgColor;
+        }
 
         &:hover {
             background: mix($black, $stageColor, 5%);
@@ -243,23 +261,13 @@ $archiveColor: #6F6F6F;
         }
     }
 
-    .bn-icon-cog {
-        margin: -4px 8px -1px -4px;
-    }
-
-    .bn-icon-close {
-        float: right;
-        margin: 3px -6px 0;
-    }
-
     .bn-icon-cog,
     .bn-icon-close {
-        opacity: .7;
+        opacity: 0.7;
     }
 }
 
 #BetterNavigatorStatusIcon {
-    display: inline-block;
     cursor: inherit;
     transition: 100ms opacity ease-in-out;
 }
@@ -267,12 +275,12 @@ $archiveColor: #6F6F6F;
 // Content
 
 #BetterNavigatorContent {
-    display: block;
-    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    gap: 6px;
     color: $contentColor;
     background: $contentBackground;
-    border: 1px solid mix($black, $contentBackground, 10%);
-    border-width: 0 0 1px 1px;
     min-width: 140px;
     overflow: auto;
 
@@ -282,13 +290,13 @@ $archiveColor: #6F6F6F;
         font-size: 11px;
         line-height: 1.2;
         color: $contentColor;
-        margin: 8px 0 4px 0;
+        margin: 5px 0 0 0;
         padding: 0;
         font-weight: normal;
     }
 
-    span[class^='bn-icon'],
-    span[class*=' bn-icon'] {
+    span[class^="bn-icon"],
+    span[class*=" bn-icon"] {
         cursor: inherit;
         margin: -2px 5px -3px -2px;
     }
@@ -303,7 +311,7 @@ $archiveColor: #6F6F6F;
         line-height: 1.4;
         border-radius: 5px;
         border-bottom: 1px solid $buttonBorder;
-        margin: 0 0 4px 0;
+        margin: 0;
         padding: 6px 10px 5px 10px;
         font-weight: bold;
         cursor: pointer;
@@ -339,7 +347,9 @@ $archiveColor: #6F6F6F;
     }
 
     .bn-links {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
         margin: 0;
         padding: 0;
         list-style-type: none;

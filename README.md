@@ -91,6 +91,15 @@ Some empty `<% include %>` placeholders are included to let you easily add more 
 
 The BetterNavigator.ss template's scope is set to the page that is being viewed, so any methods available in your page controller will be available in the BetterNavigator.ss template. This should allow you to add custom links by page type and introduce complex logic if you want to.
 
+### CMS link target
+
+By default, the "Edit in CMS" link opens in a new tab (`target="_blank"`). You can set `cms_link_target` to a named target like `silverstripe-cms` to reuse the same CMS tab:
+
+```yml
+My\Namespace\PageController:
+  cms_link_target: 'silverstripe-cms'
+```
+
 ### Overriding the "Edit in CMS" Link
 
 There may be occasions when you wish to override the "Edit in CMS" link. For example to point to the edit form for a displayed DataObject, rather than for the Page itself. To do so, simply add a `BetterNavigatorEditLink()` method to your page's Controller, e.g.:

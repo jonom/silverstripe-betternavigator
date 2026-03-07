@@ -24,6 +24,14 @@ class BetterNavigatorExtension extends Extension
     private static $better_navigator_edit_permission_mode = 'any';
 
     /**
+     * Target attribute for CMS link
+     * Options: '_blank' (new tab each time) or 'silverstripe-cms' (reuse same CMS tab)
+     * @config
+     * @var string
+     */
+    private static $cms_link_target = '_blank';
+
+    /**
      * Extensions are singleton, so any cached results need to use a unique key
      */
     private $shouldDisplay = [];
@@ -148,6 +156,7 @@ class BetterNavigatorExtension extends Extension
             'LogoutLink' => Controller::join_links(Director::absoluteBaseURL() . Security::config()->logout_url, $backURL),
             'LogoutForm' => $logoutForm,
             'EditLink' => $editLink,
+            'CmsLinkTarget' => $this->owner->config()->get('cms_link_target'),
             'Mode' => Director::get_environment_type(),
             'IsDeveloper' => $isDeveloper,
             'ScriptUrl' => $bnModule->getResource('javascript/betternavigator.js')->getURL(),

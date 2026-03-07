@@ -10,7 +10,7 @@
         <div class="bn-links">
 
             <% if $ArchiveLink.Active %>
-                <% if $EditLink %><a href="$EditLink" target="_blank"><span class="bn-icon-edit"></span><%t JonoM\BetterNavigator.RESTORE_LABEL 'Restore' %></a><% end_if %>
+                <% if $EditLink %><a href="$EditLink" target="$CmsLinkTarget"><span class="bn-icon-edit"></span><%t JonoM\BetterNavigator.RESTORE_LABEL 'Restore' %></a><% end_if %>
             <% else %>
                 <% if not $LiveLink.Active %>
                     <% if $LiveLink.Link %>
@@ -26,7 +26,7 @@
                         <a href="$StageLink.Link" aria-disabled="true" class="bn-disabled"><span class="bn-icon-view"></span><%t JonoM\BetterNavigator.DELETED_FROM_DRAFT_SITE_LABEL 'Deleted from draft site' %></a>
                     <% end_if %>
                 <% end_if %>
-                <% if $EditLink %><a href="$EditLink" target="_blank"><span class="bn-icon-edit"></span><%t JonoM\BetterNavigator.EDIT_IN_CMS_LABEL 'Edit in CMS' %></a><% end_if %>
+                <% if $EditLink %><a href="$EditLink" target="$CmsLinkTarget"><span class="bn-icon-edit"></span><%t JonoM\BetterNavigator.EDIT_IN_CMS_LABEL 'Edit in CMS' %></a><% end_if %>
             <% end_if %>
 
             <% if $Member %>

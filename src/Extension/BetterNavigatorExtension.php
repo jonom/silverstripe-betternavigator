@@ -153,7 +153,7 @@ class BetterNavigatorExtension extends Extension
             'CssClass' => $this->BetterNavigatorCssClass(),
             'ViewingTitle' => $viewingTitle,
             'LoginLink' => Controller::join_links(Director::absoluteBaseURL(), Security::config()->login_url, $backURL),
-            'LogoutLink' => Controller::join_links(Director::absoluteBaseURL() . Security::config()->logout_url, $backURL),
+            'LogoutLink' => Controller::join_links(Director::absoluteBaseURL(), Security::config()->logout_url, $backURL),
             'LogoutForm' => $logoutForm,
             'EditLink' => $editLink,
             'CmsLinkTarget' => $this->owner->config()->get('cms_link_target'),
